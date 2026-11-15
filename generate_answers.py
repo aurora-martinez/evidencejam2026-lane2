@@ -10,7 +10,7 @@ import yaml
 import time
 from search import search_question
 from retrieval import nodes, edges as graph_edges
-from answer_generator import generate_answer
+from answer_generator import generate_answer, prepare_evidence
 
 # --------------------------------------------------
 # CONFIGURATION
@@ -582,18 +582,21 @@ def generate_answer_text(question, search_result, evidence, direction):
 # QWEN ANSWER GENERATION
 # --------------------------------------------------
 
+
 def format_answer(question_item, search_result):
 
     question_id = str(question_item["id"])
     question = question_item["question"]
 
-    evidence = get_unique_edges(search_result)
+    # Original graph edges, used for calculations
+    unique_edges = get_unique_edges(search_result)
+
 
     # ----------------------------------------------
     # NO EVIDENCE
     # ----------------------------------------------
 
-    if not evidence:
+    if not unique_edges:
 
         searched_plan = search_result.get(
             "searched_for", {}
@@ -624,8 +627,6 @@ def format_answer(question_item, search_result):
                 "Indirect paths were not checked."
             )
 
-        # Estimate confidence that the graph lacks
-        # an answer based on the available diagnostics.
         diagnostics = search_result.get(
             "diagnostics", {}
         )
@@ -640,10 +641,8 @@ def format_answer(question_item, search_result):
 
         if intervention_matches and outcome_matches:
             no_evidence_confidence = 0.35
-
         elif intervention_matches or outcome_matches:
             no_evidence_confidence = 0.45
-
         else:
             no_evidence_confidence = 0.50
 
@@ -666,28 +665,28 @@ def format_answer(question_item, search_result):
     # EVIDENCE FOUND
     # ----------------------------------------------
 
-    direction = aggregate_direction(evidence)
+    direction = aggregate_direction(unique_edges)
 
-    certainty = infer_certainty(evidence)
+    certainty = infer_certainty(unique_edges)
 
     confidence = estimate_confidence(
-        evidence,
+        unique_edges,
         direction,
         search_result
     )
 
-    # Generate a deterministic fallback answer.
+    # Deterministic fallback uses original edge list
     fallback_answer = build_answer(
         question,
-        evidence,
+        unique_edges,
         direction
     )
 
-    # Ask Qwen to synthesize the retrieved evidence.
+    # Qwen receives publication-level evidence
     answer_text = generate_answer_text(
         question,
         search_result,
-        evidence,
+        unique_edges,
         direction
     )
 
@@ -700,7 +699,7 @@ def format_answer(question_item, search_result):
         "certainty": certainty,
         "edge_ids": [
             str(edge["id"])
-            for edge in evidence
+            for edge in unique_edges
         ],
         "searched_for": None,
         "extras": []
@@ -844,6 +843,8 @@ def generate_answers(
                 break
 
             except Exception as error:
+                import traceback
+                traceback.print_exc()
 
                 print(
                     f"ERROR processing {question_id}: "

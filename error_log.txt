@@ -1,0 +1,44 @@
+
+[1/2] Processing c3...
+Question attempt 1/2
+Traceback (most recent call last):
+  File "/Users/aurora/evidencejam2026/generate_answers.py", line 839, in generate_answers
+    answer = format_answer(
+  File "/Users/aurora/evidencejam2026/generate_answers.py", line 596, in format_answer
+    if not evidence["publications"]:
+TypeError: list indices must be integers or slices, not str
+ERROR processing c3: TypeError: list indices must be integers or slices, not str
+Waiting 3 seconds before retrying...
+Question attempt 2/2
+Traceback (most recent call last):
+  File "/Users/aurora/evidencejam2026/generate_answers.py", line 839, in generate_answers
+    answer = format_answer(
+  File "/Users/aurora/evidencejam2026/generate_answers.py", line 596, in format_answer
+    if not evidence["publications"]:
+TypeError: list indices must be integers or slices, not str
+ERROR processing c3: TypeError: list indices must be integers or slices, not str
+Status: processing_error
+Confidence: 0.0
+
+[2/2] Processing c4-modified...
+Question attempt 1/2
+Traceback (most recent call last):
+  File "/Users/aurora/evidencejam2026/generate_answers.py", line 839, in generate_answers
+    answer = format_answer(
+  File "/Users/aurora/evidencejam2026/generate_answers.py", line 596, in format_answer
+    if not evidence["publications"]:
+TypeError: list indices must be integers or slices, not str
+ERROR processing c4-modified: TypeError: list indices must be integers or slices, not str
+Waiting 3 seconds before retrying...
+Question attempt 2/2
+Traceback (most recent call last):
+  File "/Users/aurora/evidencejam2026/generate_answers.py", line 839, in generate_answers
+    answer = format_answer(
+  File "/Users/aurora/evidencejam2026/generate_answers.py", line 596, in format_answer
+    if not evidence["publications"]:
+TypeError: list indices must be integers or slices, not str
+ERROR processing c4-modified: TypeError: list indices must be integers or slices, not str
+Status: processing_error
+Confidence: 0.0
+
+Saved 2 answers to answers_debug.json

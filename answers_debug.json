@@ -1,0 +1,50 @@
+{
+  "team": "YC Startup",
+  "answers": [
+    {
+      "id": "c3",
+      "status": "answered",
+      "answer": "The retrieved graph evidence suggests an increase in higher mean winter survival of M. gapperi associated with treatment site type (dispersed sites). Based on 1 retrieved graph edge.",
+      "direction": "increase",
+      "confidence": 0.7,
+      "certainty": "low",
+      "edge_ids": [
+        "camo:edge_495dbfc15da8"
+      ],
+      "searched_for": null,
+      "extras": []
+    },
+    {
+      "id": "c4-modified",
+      "status": "answered",
+      "answer": "The retrieved graph evidence suggests an increase in Increased seedling biomass associated with Fertilizer application. Based on 20 retrieved graph edges.",
+      "direction": "increase",
+      "confidence": 0.804,
+      "certainty": "moderate",
+      "edge_ids": [
+        "camo:edge_4ec17738dc6f",
+        "camo:edge_ed5dd4b0434b",
+        "camo:edge_6b9afb321f2c",
+        "camo:edge_6bfff4b7b1a0",
+        "camo:edge_4b5a90a48179",
+        "camo:edge_a17bba572e9b",
+        "camo:edge_8d09b599854f",
+        "camo:edge_a4ba3ab8148c",
+        "camo:edge_dd253d9b4352",
+        "camo:edge_4de9efbfec5c",
+        "camo:edge_ddfed005df71",
+        "camo:edge_7fd63852f9f5",
+        "camo:edge_6cc2e113d5e8",
+        "camo:edge_72711e3c7099",
+        "camo:edge_34f2129de4f8",
+        "camo:edge_43ca4b5132bd",
+        "camo:edge_7ab0be2fbee4",
+        "camo:edge_3fb326f2a6c3",
+        "camo:edge_328fc34e258c",
+        "camo:edge_164c002e6832"
+      ],
+      "searched_for": null,
+      "extras": []
+    }
+  ]
+}
