@@ -1,0 +1,136 @@
+{
+  "interventions": [
+    "seed-mix species",
+    "seed mix sowing",
+    "Ontario ELC ecosite type",
+    "dry deciduous forest",
+    "wet deciduous forest",
+    "meadow",
+    "riparian"
+  ],
+  "outcomes": [
+    "establishment",
+    "persistence",
+    "self-seeding",
+    "recruitment",
+    "survival",
+    "population maintenance",
+    "seedling density",
+    "natural regeneration"
+  ],
+  "subquestions": [
+    {
+      "intervention": "seed-mix species",
+      "outcome": "establishment in dry deciduous forest"
+    },
+    {
+      "intervention": "seed-mix species",
+      "outcome": "persistence in dry deciduous forest"
+    },
+    {
+      "intervention": "seed-mix species",
+      "outcome": "self-seeding in dry deciduous forest"
+    },
+    {
+      "intervention": "seed-mix species",
+      "outcome": "establishment in wet deciduous forest"
+    },
+    {
+      "intervention": "seed-mix species",
+      "outcome": "persistence in wet deciduous forest"
+    },
+    {
+      "intervention": "seed-mix species",
+      "outcome": "self-seeding in wet deciduous forest"
+    },
+    {
+      "intervention": "seed-mix species",
+      "outcome": "establishment in meadow"
+    },
+    {
+      "intervention": "seed-mix species",
+      "outcome": "persistence in meadow"
+    },
+    {
+      "intervention": "seed-mix species",
+      "outcome": "self-seeding in meadow"
+    },
+    {
+      "intervention": "seed-mix species",
+      "outcome": "establishment in riparian"
+    },
+    {
+      "intervention": "seed-mix species",
+      "outcome": "persistence in riparian"
+    },
+    {
+      "intervention": "seed-mix species",
+      "outcome": "self-seeding in riparian"
+    }
+  ],
+  "synonyms": {
+    "seed-mix species": [
+      "seed mix species",
+      "restoration seed species",
+      "sown species",
+      "seeded species",
+      "planting mix species"
+    ],
+    "establishment": [
+      "germination",
+      "seedling establishment",
+      "initial establishment",
+      "colonization",
+      "settlement"
+    ],
+    "persistence": [
+      "survival",
+      "population persistence",
+      "long-term survival",
+      "maintenance",
+      "retention"
+    ],
+    "self-seeding": [
+      "self-sowing",
+      "self-recruitment",
+      "natural regeneration",
+      "seedling recruitment",
+      "autonomous recruitment"
+    ],
+    "Ontario ELC ecosite": [
+      "EcoLand Classification",
+      "ELC ecosite",
+      "ecosite type",
+      "site type",
+      "ecological land classification"
+    ],
+    "dry deciduous forest": [
+      "dry broadleaf forest",
+      "dry deciduous woodland",
+      "dry forest",
+      "dry deciduous",
+      "dry broadleaf woodland"
+    ],
+    "wet deciduous forest": [
+      "wet broadleaf forest",
+      "wet deciduous woodland",
+      "wet forest",
+      "wet deciduous",
+      "wet broadleaf woodland"
+    ],
+    "meadow": [
+      "grassland",
+      "herbaceous meadow",
+      "prairie",
+      "field",
+      "open meadow"
+    ],
+    "riparian": [
+      "riparian corridor",
+      "streamside",
+      "floodplain",
+      "riparian woodland",
+      "riparian zone"
+    ]
+  }
+}

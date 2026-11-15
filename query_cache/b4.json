@@ -1,0 +1,125 @@
+{
+  "interventions": [
+    "oil sands tailings exposure",
+    "PCB exposure",
+    "acid deposition",
+    "remediation actions",
+    "unremediated contaminated site"
+  ],
+  "outcomes": [
+    "wildlife mortality",
+    "aquatic community abundance",
+    "wildlife sub-lethal stress",
+    "aquatic community species richness",
+    "reproductive success",
+    "survival",
+    "population recovery",
+    "community recovery"
+  ],
+  "subquestions": [
+    {
+      "intervention": "oil sands tailings exposure",
+      "outcome": "wildlife mortality"
+    },
+    {
+      "intervention": "oil sands tailings exposure",
+      "outcome": "wildlife sub-lethal stress"
+    },
+    {
+      "intervention": "oil sands tailings exposure",
+      "outcome": "aquatic community abundance"
+    },
+    {
+      "intervention": "PCB exposure",
+      "outcome": "wildlife mortality"
+    },
+    {
+      "intervention": "PCB exposure",
+      "outcome": "wildlife sub-lethal stress"
+    },
+    {
+      "intervention": "PCB exposure",
+      "outcome": "reproductive success"
+    },
+    {
+      "intervention": "acid deposition",
+      "outcome": "wildlife mortality"
+    },
+    {
+      "intervention": "acid deposition",
+      "outcome": "aquatic community species richness"
+    },
+    {
+      "intervention": "acid deposition",
+      "outcome": "wildlife sub-lethal stress"
+    },
+    {
+      "intervention": "remediation actions",
+      "outcome": "population recovery"
+    },
+    {
+      "intervention": "remediation actions",
+      "outcome": "community recovery"
+    },
+    {
+      "intervention": "unremediated contaminated site",
+      "outcome": "community recovery"
+    }
+  ],
+  "synonyms": {
+    "oil sands tailings": [
+      "oil sands tailings pond",
+      "bitumen tailings",
+      "OS tailings",
+      "tailings pond",
+      "oil sands process water"
+    ],
+    "PCBs": [
+      "polychlorinated biphenyls",
+      "PCB congeners",
+      "Aroclor",
+      "chlorinated biphenyls"
+    ],
+    "acid deposition": [
+      "acid rain",
+      "acid precipitation",
+      "acidification",
+      "sulfur dioxide deposition",
+      "nitrogen deposition"
+    ],
+    "lethal effects": [
+      "mortality",
+      "death",
+      "lethality",
+      "case fatality"
+    ],
+    "sub-lethal effects": [
+      "sublethal effects",
+      "physiological stress",
+      "behavioral impairment",
+      "reproductive impairment",
+      "growth impairment"
+    ],
+    "wildlife": [
+      "terrestrial fauna",
+      "birds",
+      "mammals",
+      "amphibians",
+      "reptiles"
+    ],
+    "aquatic communities": [
+      "freshwater communities",
+      "stream communities",
+      "lake communities",
+      "benthic communities",
+      "fish communities"
+    ],
+    "remediation actions": [
+      "remediation",
+      "restoration",
+      "cleanup",
+      "mitigation",
+      "rehabilitation"
+    ]
+  }
+}
