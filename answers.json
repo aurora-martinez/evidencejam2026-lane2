@@ -3,13 +3,15 @@
   "answers": [
     {
       "id": "c3",
-      "status": "no_evidence",
-      "answer": "Unable to determine an answer because question processing did not complete.",
-      "direction": null,
-      "confidence": 0.0,
-      "certainty": null,
-      "edge_ids": [],
-      "searched_for": "The graph search was not completed due to RuntimeError. No conclusion about evidence availability can be made.",
+      "status": "answered",
+      "answer": "The supplied evidence is insufficient to answer the question of which seed-mix species establish, persist, and self-seed in each Ontario ELC ecosite type, including dry or wet deciduous forest, meadow, or riparian ecosites.\n\nThe only retrieved relationship concerns a single species, *M. gapperi*, and a single outcome, mean winter survival. It reports that higher mean winter survival of *M. gapperi* was associated with dispersed treatment sites, with survival declining from dispersed to forest sites. This relationship is described as associational, not causal, and is assigned low certainty. It therefore cannot be interpreted as evidence that dispersed site type caused higher winter survival, nor can it be used to infer establishment, persistence, or self-seeding.\n\nThe evidence also does not identify a seed-mix species list, does not compare Ontario ELC ecosite types, and does not address dry/wet deciduous forest, meadow, or riparian conditions. It does not report whether any species established, persisted, or produced seed in any ecosite type. Consequently, the original question remains unanswered except for a weak, non-causal indication that *M. gapperi* winter survival was higher at dispersed sites than at forest sites.",
+      "direction": "increase",
+      "confidence": 0.7,
+      "certainty": "low",
+      "edge_ids": [
+        "camo:edge_495dbfc15da8"
+      ],
+      "searched_for": null,
       "extras": []
     },
     {
@@ -40,7 +42,7 @@
     {
       "id": "c7",
       "status": "no_evidence",
-      "answer": "No direct graph edge was retrieved connecting the searched interventions and outcomes.",
+      "answer": "No direct graph evidence was retrieved to answer this question.",
       "direction": null,
       "confidence": 0.45,
       "certainty": null,
@@ -51,12 +53,82 @@
     {
       "id": "c13-modified",
       "status": "no_evidence",
-      "answer": "No direct graph edge was retrieved connecting the searched interventions and outcomes.",
+      "answer": "No direct graph evidence was retrieved to answer this question.",
       "direction": null,
       "confidence": 0.45,
       "certainty": null,
       "edge_ids": [],
       "searched_for": "No direct edge found between intervention terms ['fire interval', 'fire return interval', 'time since fire', 'fire frequency', 'fire severity', 'burn severity', 'fire intensity', 'disturbance severity', 'seed supply', 'seed availability', 'seed source', 'seed rain', 'seedbed type', 'seedbed condition', 'soil seedbed', 'seedbed quality'] and outcome terms ['natural conifer regeneration', 'conifer recruitment', 'natural regeneration', 'conifer seedling establishment', 'conifer regeneration failure', 'regeneration failure', 'lack of conifer regeneration', 'failed regeneration']. Indirect paths were not checked.",
+      "extras": []
+    },
+    {
+      "id": "c16-modified",
+      "status": "no_evidence",
+      "answer": "No direct graph evidence was retrieved to answer this question.",
+      "direction": null,
+      "confidence": 0.5,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "No direct edge found between intervention terms ['grassland restoration', 'grassland rehabilitation', 'grassland recovery', 'prairie restoration'] and outcome terms []. Indirect paths were not checked.",
+      "extras": []
+    },
+    {
+      "id": "b1",
+      "status": "no_evidence",
+      "answer": "No direct graph evidence was retrieved to answer this question.",
+      "direction": null,
+      "confidence": 0.45,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "No direct edge found between intervention terms ['partial harvesting', 'partial cut', 'partial harvest', 'selective logging', 'clearcutting', 'clearcut', 'clear felling', 'full harvest', 'retained woody debris', 'coarse woody debris', 'CWD', 'deadwood retention', 'riparian retention', 'riparian buffer', 'riparian forest retention', 'riparian reserve'] and outcome terms ['biodiversity maintenance', 'biodiversity conservation', 'biodiversity persistence', 'maintaining biodiversity', 'biodiversity recovery', 'biodiversity rebound', 'recovery of biodiversity', 'post-harvest biodiversity recovery']. Indirect paths were not checked.",
+      "extras": []
+    },
+    {
+      "id": "b2",
+      "status": "answered",
+      "answer": "The retrieved graph evidence suggests an increase in Shift from net carbon source to net carbon sink status associated with Restoration of bare peatland via moss layer transfer technique (MLTT). Based on 1 retrieved graph edge.",
+      "direction": "increase",
+      "confidence": 0.82,
+      "certainty": "moderate",
+      "edge_ids": [
+        "camo:edge_d60c25b60634"
+      ],
+      "searched_for": null,
+      "extras": []
+    },
+    {
+      "id": "b3",
+      "status": "no_evidence",
+      "answer": "No direct graph evidence was retrieved to answer this question.",
+      "direction": null,
+      "confidence": 0.35,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "No direct edge found between intervention terms ['herbicide application', 'herbicide treatment', 'chemical weed control', 'weedicide application', 'glyphosate application', 'glyphosate', 'Roundup', 'glyphosate herbicide'] and outcome terms ['native plant cover', 'native vegetation cover', 'native plant percent cover', 'native plant cover abundance', 'native plant richness', 'native species richness', 'native plant species richness', 'native plant species count']. Indirect paths were not checked.",
+      "extras": []
+    },
+    {
+      "id": "b4",
+      "status": "no_evidence",
+      "answer": "No direct graph evidence was retrieved to answer this question.",
+      "direction": null,
+      "confidence": 0.35,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "No direct edge found between intervention terms ['oil sands tailings', 'oil sands tailings ponds', 'tailings ponds', 'oil sands tailings material', 'PCBs', 'polychlorinated biphenyls', 'polychlorinated biphenyl', 'acid deposition', 'acid rain', 'acid precipitation', 'remediation actions', 'remediation', 'restoration actions', 'cleanup actions'] and outcome terms ['lethal effects on wildlife and aquatic communities', 'mortality', 'lethality', 'death', 'sub-lethal effects on wildlife and aquatic communities', 'sublethal effects', 'sublethal responses', 'non-lethal effects', 'recovery of wildlife and aquatic communities', 'ecological recovery', 'community recovery', 'recovery']. Indirect paths were not checked.",
+      "extras": []
+    },
+    {
+      "id": "b5",
+      "status": "answered",
+      "answer": "The supplied evidence is insufficient to determine whether multiple stressors interact in restoration sites or to identify which stressor most limits recovery. It contains only one associational relationship: harvest disturbances are associated with a higher recovery rate, with low certainty. The supporting statement reports that 77.4% of harvest areas and 57.4% of wildfire-disturbed areas were considered recovered by all three metrics. This suggests that, in the context of that evidence, harvest disturbance was associated with a higher proportion of recovered areas than wildfire disturbance, and therefore wildfire disturbance may have been more limiting than harvest disturbance in that comparison.\n\nHowever, this finding does not address the core question about simultaneous stressors. The evidence does not report sites experiencing combinations such as deer browsing plus competing vegetation, harvesting plus drought, or repeated fires. It also does not provide interaction effects, mechanisms, or evidence that one stressor modifies the impact of another. The relationship is explicitly associational, not causal, so it cannot be interpreted as proof that harvest disturbance causes higher recovery or that wildfire disturbance causes lower recovery. The certainty is low, and the recovery metrics are not described in the supplied evidence.\n\nIn short, the only supported observation is a low-certainty association between harvest disturbance and higher recovery relative to wildfire disturbance. It does not establish stressor interactions, does not identify a dominant limiting stressor in multi-stressor systems, and leaves the original question largely unanswered.",
+      "direction": "increase",
+      "confidence": 0.675,
+      "certainty": "low",
+      "edge_ids": [
+        "camo:edge_6b4137227797"
+      ],
+      "searched_for": null,
       "extras": []
     }
   ]

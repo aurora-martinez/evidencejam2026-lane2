@@ -2,6 +2,7 @@
 import re
 import json
 from pathlib import Path
+from answer_generator import generate_answer
 
 from retrieval import edges, nodes
 
@@ -443,10 +444,6 @@ def search_question(question, top_k=15):
     # STEP 1: Extract interventions and outcomes
     plan = plan_question(question)
 
-    print("\n========== QWEN SEARCH PLAN ==========")
-    print(json.dumps(plan, indent=2))
-    print("======================================")
-
     # STEP 2: Search graph using extracted terms
     result = search_plan(plan, top_k=top_k)
 
@@ -650,6 +647,9 @@ def evaluate_retrieval(gold_file, top_k=15):
 # 11. RUN
 # --------------------------------------------------
 
+# --------------------------------------------------
+# 11. RUN
+# --------------------------------------------------
 
 if __name__ == "__main__":
 
@@ -661,9 +661,24 @@ if __name__ == "__main__":
         print("Please enter a question.")
 
     else:
+
+        # Retrieve evidence
         result = search_question(
             question,
             top_k=15
         )
 
+        # Display retrieved data
         display_results(result)
+
+        # Generate descriptive answer through Qwen
+        print("\n" + "=" * 60)
+        print("DETAILED SCIENTIFIC ANSWER")
+        print("=" * 60)
+
+        answer = generate_answer(
+            question,
+            result
+        )
+
+        print("\n" + answer)

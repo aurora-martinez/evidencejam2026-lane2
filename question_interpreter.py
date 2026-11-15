@@ -36,5 +36,3 @@ if __name__ == "__main__":
 
     result = interpret_question(question)
 
-    print("\nSEARCH PLAN:\n")
-    print(json.dumps(result, indent=2))

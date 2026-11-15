@@ -1,29 +1,36 @@
 
 import os
 import json
-from openai import OpenAI
+import time
+import requests
 from retrieval import search_question, nodes
+import os
 
+required_variables = [
+    "BRINE_URL",
+    "BRINE_MODEL",
+    "BRINE_API_KEY"
+]
 
-# Connect to the Qwen API
-client = OpenAI(
-    base_url=os.environ["BRINE_URL"],
-    api_key=os.environ["BRINE_API_KEY"],
-    timeout=120.0,
-    max_retries=0
-)
+missing = [
+    variable for variable in required_variables
+    if not os.environ.get(variable)
+]
 
+if missing:
+    raise EnvironmentError(
+        f"Missing environment variables: {', '.join(missing)}"
+    )
 
 def reason_about_question(question):
 
-     # Step 1: Retrieve candidate evidence
+    # Step 1: Retrieve candidate evidence
     print("Searching the causal graph...", flush=True)
 
     edges = search_question(question, top_k=5)
 
     print(f"Found {len(edges)} candidate edges.", flush=True)
 
-    # NEW: Display the exact evidence sent to Qwen
     print("\nRETRIEVED EDGE IDS:")
 
     for edge in edges:
@@ -52,7 +59,7 @@ def reason_about_question(question):
             "source": edge.get("original_sentence")
         })
 
-    # Step 2: Prepare the evidence for Qwen
+    # Step 2: Prepare evidence for Qwen
     evidence_text = json.dumps(evidence, indent=2)
 
     prompt = f"""
@@ -75,12 +82,19 @@ TASK:
 Return a concise answer with supporting edge IDs.
 """
 
-    # Step 3: Send the request to Qwen
+    # Step 3: Send request directly to Qwen
     print("Sending evidence to Qwen...", flush=True)
 
-    response = client.chat.completions.create(
-        model=os.environ["BRINE_MODEL"],
-        messages=[
+    url = os.environ["BRINE_URL"].rstrip("/") + "/chat/completions"
+
+    headers = {
+        "Authorization": f"Bearer {os.environ['BRINE_API_KEY']}",
+        "Content-Type": "application/json"
+    }
+
+    payload = {
+        "model": os.environ["BRINE_MODEL"],
+        "messages": [
             {
                 "role": "system",
                 "content": (
@@ -93,39 +107,46 @@ Return a concise answer with supporting edge IDs.
                 "content": prompt
             }
         ],
-        max_tokens=1200
+        "max_tokens": 2500
+    }
+
+    start_time = time.perf_counter()
+
+    response = requests.post(
+        url,
+        headers=headers,
+        json=payload,
+        timeout=120
     )
+
+    response.raise_for_status()
+
+    elapsed_time = time.perf_counter() - start_time
 
     print("Qwen response received!", flush=True)
+    print(f"Response time: {elapsed_time:.2f} seconds")
 
-    # Step 4: Inspect the response
-    choice = response.choices[0]
-    message = choice.message
+    # Step 4: Process Qwen response
+    result = response.json()
+
+    choice = result["choices"][0]
+    message = choice["message"]
 
     print("\n--- QWEN DEBUG INFORMATION ---")
-    print("Finish reason:", choice.finish_reason)
-    print("Content:", repr(message.content))
-
-    reasoning_content = getattr(
-        message,
-        "reasoning_content",
-        None
-    )
+    print("Finish reason:", choice.get("finish_reason"))
+    print("Content:", repr(message.get("content")))
 
     print(
         "Reasoning content:",
-        repr(reasoning_content)[:1000]
+        repr(message.get("reasoning_content"))[:1000]
     )
 
-    print("Tool calls:", repr(message.tool_calls))
-
-    if response.usage:
-        print("Token usage:", response.usage)
+    print("Token usage:", result.get("usage"))
 
     print("------------------------------\n")
 
-    # Step 5: Return the final answer
-    return message.content
+    # Step 5: Return final answer
+    return message.get("content")
 
 
 if __name__ == "__main__":
@@ -144,7 +165,4 @@ if __name__ == "__main__":
     if answer:
         print(answer)
     else:
-        print(
-            "No final text answer was returned. "
-            "Check the debug information above."
-        )
+        print("No final text answer was returned.")

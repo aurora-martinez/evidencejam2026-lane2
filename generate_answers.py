@@ -3,7 +3,6 @@ import argparse
 import json
 import math
 import re
-import time
 from collections import Counter
 from pathlib import Path
 
@@ -11,7 +10,7 @@ import yaml
 
 from search import search_question
 from retrieval import nodes, edges as graph_edges
-
+from answer_generator import generate_answer
 
 # --------------------------------------------------
 # CONFIGURATION
@@ -538,10 +537,93 @@ def build_answer(question, edges, direction):
         f"{'edge' if count == 1 else 'edges'}."
     )
 
+def generate_answer_text(question, search_result, evidence, direction):
+    """
+    Use Qwen to synthesize the retrieved graph evidence.
 
+    If Qwen fails, fall back to the deterministic answer.
+    """
+
+    fallback = build_answer(
+        question,
+        evidence,
+        direction
+    )
+
+    try:
+        answer = generate_answer(
+            question,
+            search_result
+        )
+
+        # Make sure Qwen returned usable text.
+        if not isinstance(answer, str) or not answer.strip():
+            raise ValueError(
+                "Qwen returned an empty or invalid answer."
+            )
+
+        return answer.strip()
+
+    except Exception as error:
+
+        print(
+            f"Qwen answer generation failed: "
+            f"{type(error).__name__}: {error}",
+            flush=True
+        )
+
+        print(
+            "Using deterministic fallback answer.",
+            flush=True
+        )
+
+        return fallback
+# --------------------------------------------------
+# QWEN ANSWER GENERATION
+# --------------------------------------------------
+
+def generate_grounded_answer(question, search_result, fallback):
+    """
+    Ask Qwen to interpret retrieved graph evidence
+    and produce a direct, descriptive answer.
+
+    Falls back to the deterministic answer if
+    Qwen fails.
+    """
+
+    try:
+        answer = generate_answer(
+            question,
+            search_result
+        )
+
+        if not isinstance(answer, str) or not answer.strip():
+            raise ValueError(
+                "Qwen returned an empty answer."
+            )
+
+        return answer.strip()
+
+    except Exception as error:
+
+        print(
+            "Qwen answer generation failed: "
+            f"{type(error).__name__}: {error}",
+            flush=True
+        )
+
+        print(
+            "Using the fallback answer instead.",
+            flush=True
+        )
+
+        return fallback
+
+    
 # --------------------------------------------------
 # FORMAT ONE ANSWER
 # --------------------------------------------------
+
 
 def format_answer(question_item, search_result):
 
@@ -585,9 +667,8 @@ def format_answer(question_item, search_result):
                 "Indirect paths were not checked."
             )
 
-        # Confidence that the graph lacks an answer
-        # should not be high when only direct edges
-        # have been searched.
+        # Estimate confidence that the graph lacks
+        # an answer based on the available diagnostics.
         diagnostics = search_result.get(
             "diagnostics", {}
         )
@@ -612,8 +693,9 @@ def format_answer(question_item, search_result):
         return {
             "id": question_id,
             "status": "no_evidence",
-            "answer": build_answer(
-                question, [], None
+            "answer": (
+                "No direct graph evidence was retrieved "
+                "to answer this question."
             ),
             "direction": None,
             "confidence": no_evidence_confidence,
@@ -637,14 +719,25 @@ def format_answer(question_item, search_result):
         search_result
     )
 
+    # Generate a deterministic fallback answer.
+    fallback_answer = build_answer(
+        question,
+        evidence,
+        direction
+    )
+
+    # Ask Qwen to synthesize the retrieved evidence.
+    answer_text = generate_answer_text(
+        question,
+        search_result,
+        evidence,
+        direction
+    )
+
     return {
         "id": question_id,
         "status": "answered",
-        "answer": build_answer(
-            question,
-            evidence,
-            direction
-        ),
+        "answer": answer_text,
         "direction": direction,
         "confidence": confidence,
         "certainty": certainty,
@@ -815,8 +908,6 @@ def generate_answers(
                         "before retrying...",
                         flush=True
                     )
-
-                    time.sleep(RETRY_DELAY)
 
         answers.append(answer)
 

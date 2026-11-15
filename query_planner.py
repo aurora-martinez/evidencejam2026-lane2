@@ -6,32 +6,30 @@ import hashlib
 import time
 from pathlib import Path
 
-from openai import OpenAI, APITimeoutError, APIConnectionError
+import requests
 from dotenv import load_dotenv
 
 
 # --------------------------------------------------
-# CONFIGURATION
+# 1. CONFIGURATION
 # --------------------------------------------------
 
 BASE_DIR = Path(__file__).resolve().parent
 CACHE_DIR = BASE_DIR / "query_cache"
+
 CACHE_DIR.mkdir(exist_ok=True)
 
 load_dotenv(BASE_DIR / ".env")
 
-client = OpenAI(
-    base_url=os.environ["BRINE_URL"],
-    api_key=os.environ["BRINE_API_KEY"],
-    timeout=120.0,
-    max_retries=0
-)
+BRINE_URL = os.environ["BRINE_URL"].rstrip("/")
+BRINE_API_KEY = os.environ["BRINE_API_KEY"]
+BRINE_MODEL = os.environ["BRINE_MODEL"]
 
 PLAN_VERSION = 2
 
 
 # --------------------------------------------------
-# VALIDATE SEARCH PLANS
+# 2. VALIDATE SEARCH PLANS
 # --------------------------------------------------
 
 def validate_plan(plan):
@@ -43,6 +41,7 @@ def validate_plan(plan):
         raise ValueError("Search plan must be a dictionary.")
 
     for key in ("interventions", "outcomes"):
+
         values = plan.get(key)
 
         if not isinstance(values, list):
@@ -67,6 +66,11 @@ def validate_plan(plan):
 
     for concept, terms in synonyms.items():
 
+        if concept not in concepts:
+            raise ValueError(
+                f"Unknown synonym concept: {concept}"
+            )
+
         if not isinstance(terms, list):
             raise ValueError(
                 f"Synonyms for {concept} must be a list."
@@ -88,7 +92,7 @@ def validate_plan(plan):
 
 
 # --------------------------------------------------
-# MERGE SYNONYMS INTO SEARCH LISTS
+# 3. MERGE SYNONYMS INTO SEARCH LISTS
 # --------------------------------------------------
 
 def merge_search_terms(plan):
@@ -100,17 +104,23 @@ def merge_search_terms(plan):
     synonyms = plan["synonyms"]
 
     def expand_terms(concepts):
+
         expanded = []
         seen = set()
 
         for concept in concepts:
-            terms = [concept] + synonyms.get(concept, [])
+
+            terms = [
+                concept
+            ] + synonyms.get(concept, [])
 
             for term in terms:
+
                 term = term.strip()
                 normalized = term.casefold()
 
                 if term and normalized not in seen:
+
                     expanded.append(term)
                     seen.add(normalized)
 
@@ -120,6 +130,7 @@ def merge_search_terms(plan):
         "interventions": expand_terms(
             plan["interventions"]
         ),
+
         "outcomes": expand_terms(
             plan["outcomes"]
         )
@@ -127,7 +138,7 @@ def merge_search_terms(plan):
 
 
 # --------------------------------------------------
-# PARSE MODEL OUTPUT
+# 4. PARSE MODEL OUTPUT
 # --------------------------------------------------
 
 def parse_json_response(content):
@@ -161,7 +172,7 @@ def parse_json_response(content):
 
 
 # --------------------------------------------------
-# CACHE HELPERS
+# 5. CACHE HELPERS
 # --------------------------------------------------
 
 def get_cache_path(question):
@@ -180,7 +191,7 @@ def get_cache_path(question):
 
 
 # --------------------------------------------------
-# QUESTION PLANNER
+# 6. QUESTION PLANNER
 # --------------------------------------------------
 
 def plan_question(question, question_id=None):
@@ -209,19 +220,21 @@ def plan_question(question, question_id=None):
     if cache_path.exists():
 
         try:
+
             with open(
                 cache_path,
                 "r",
                 encoding="utf-8"
             ) as file:
-                cached = json.load(file)
 
+                cached = json.load(file)
 
             return merge_search_terms(
                 validate_plan(cached)
             )
 
         except (ValueError, KeyError, TypeError):
+
             print(
                 "Invalid cached plan; regenerating...",
                 flush=True
@@ -283,18 +296,18 @@ RULES:
 OUTPUT FORMAT:
 
 {{
-  "interventions": [
-    "specific intervention or driver"
-  ],
-  "outcomes": [
-    "specific ecological outcome"
-  ],
-  "synonyms": {{
-    "specific intervention or outcome": [
-      "alternative term",
-      "abbreviation"
-    ]
-  }}
+    "interventions": [
+        "specific intervention or driver"
+    ],
+    "outcomes": [
+        "specific ecological outcome"
+    ],
+    "synonyms": {{
+        "specific intervention or outcome": [
+            "alternative term",
+            "abbreviation"
+        ]
+    }}
 }}
 
 Keep the JSON compact.
@@ -305,53 +318,65 @@ QUESTION:
 {question}
 """
 
-   
+    messages = [
+        {
+            "role": "user",
+            "content": prompt
+        }
+    ]
+
     # ----------------------------------------------
     # QWEN API REQUEST WITH AUTOMATIC RETRIES
     # ----------------------------------------------
 
-    response = None
+    data = None
 
     for attempt in range(2):
 
         try:
 
-            response = client.chat.completions.create(
-                model=os.environ["BRINE_MODEL"],
-                messages=[
-                    {
-                        "role": "system",
-                        "content": (
-                            "You extract interventions, "
-                            "outcomes and scientific synonyms "
-                            "from ecological questions. "
-                            "Return valid JSON only. "
-                            "Do not reason aloud."
-                        )
-                    },
-                    {
-                        "role": "user",
-                        "content": prompt + "\n/no_think"
-                    }
-                ],
-                max_tokens=3000,
-                temperature=0
+            response = requests.post(
+
+                f"{BRINE_URL}/chat/completions",
+
+                headers={
+                    "Authorization": f"Bearer {BRINE_API_KEY}",
+                    "Content-Type": "application/json"
+                },
+
+                json={
+                    "model": BRINE_MODEL,
+                    "messages": messages,
+                    "temperature": 0.2,
+                    "max_tokens": 2500
+                },
+
+                timeout=120
             )
 
-            
+            response.raise_for_status()
+
+            data = response.json()
 
             break
 
-        except (APITimeoutError, APIConnectionError) as error:
-
+        except requests.exceptions.Timeout as error:
 
             if attempt == 1:
                 raise RuntimeError(
-                    "Qwen is unavailable after "
-                    "2 attempts. Check BRINE server "
-                    "availability and try again."
+                    "Qwen timed out after 2 attempts. "
+                    "Check Nibi availability."
                 ) from error
 
+            time.sleep(2)
+
+        except requests.exceptions.ConnectionError as error:
+
+            if attempt == 1:
+                raise RuntimeError(
+                    "Could not connect to Qwen after "
+                    "2 attempts. Check the Nibi endpoint."
+                ) from error
 
             time.sleep(2)
 
@@ -359,20 +384,22 @@ QUESTION:
     # CHECK RESPONSE
     # ----------------------------------------------
 
-    choice = response.choices[0]
-    content = choice.message.content
+    if not data or not data.get("choices"):
+        raise ValueError(
+            "Qwen returned an empty response."
+        )
+
+    choice = data["choices"][0]
+
+    content = choice["message"].get("content", "")
+
+    finish_reason = choice.get("finish_reason")
 
     if not content:
         raise ValueError(
             "Qwen returned no content. "
-            f"Finish reason: {choice.finish_reason}"
+            f"Finish reason: {finish_reason}"
         )
-
-    # ----------------------------------------------
-    # DEBUG OUTPUT
-    # ----------------------------------------------
-
-   
 
     # ----------------------------------------------
     # PARSE AND VALIDATE
@@ -380,29 +407,27 @@ QUESTION:
 
     try:
 
-        if choice.finish_reason == "length":
+        if finish_reason == "length":
             raise ValueError(
                 "Qwen response was truncated."
             )
 
         plan = parse_json_response(content)
+
         plan = validate_plan(plan)
 
-    except (json.JSONDecodeError, ValueError) as error:
+    except (json.JSONDecodeError, ValueError):
 
-
-        debug_path = (
-            CACHE_DIR / "debug_response.txt"
-        )
+        debug_path = CACHE_DIR / "debug_response.txt"
 
         with open(
             debug_path,
             "w",
             encoding="utf-8"
         ) as file:
+
             file.write(content)
 
-    
         raise
 
     # ----------------------------------------------
@@ -414,6 +439,7 @@ QUESTION:
         "w",
         encoding="utf-8"
     ) as file:
+
         json.dump(
             plan,
             file,
@@ -421,13 +447,15 @@ QUESTION:
             ensure_ascii=False
         )
 
+    # ----------------------------------------------
+    # RETURN EXPANDED SEARCH TERMS
+    # ----------------------------------------------
 
-    # Merge synonyms into the two final lists
     return merge_search_terms(plan)
 
 
 # --------------------------------------------------
-# TEST
+# 7. TEST
 # --------------------------------------------------
 
 if __name__ == "__main__":
@@ -441,4 +469,4 @@ if __name__ == "__main__":
 
     plan = plan_question(question)
 
-   
+

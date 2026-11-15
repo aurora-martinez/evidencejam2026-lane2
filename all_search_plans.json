@@ -5,138 +5,66 @@
     "plan": {
       "interventions": [
         "seed-mix species",
-        "seed mix sowing",
-        "Ontario ELC ecosite type",
-        "dry deciduous forest",
-        "wet deciduous forest",
-        "meadow",
-        "riparian"
+        "seed mix species",
+        "seed mixture species",
+        "seeded species",
+        "ELC ecosite type",
+        "ecosite type",
+        "ELC ecosite",
+        "site type"
       ],
       "outcomes": [
         "establishment",
-        "persistence",
-        "self-seeding",
+        "establish",
+        "colonization",
         "recruitment",
+        "persistence",
+        "persist",
         "survival",
-        "population maintenance",
-        "seedling density",
-        "natural regeneration"
+        "long-term presence",
+        "self-seeding",
+        "self-seed",
+        "self-sowing",
+        "natural reseeding"
+      ]
+    }
+  },
+  "c4-modified": {
+    "kind": "intervention_outcomes",
+    "question": "For tree planting in Canadian forest restoration, how do planting-stock traits (seedling size, nursery fertilization, mycorrhizal inoculation) affect survival and growth, and how do competing vegetation and site preparation change that?",
+    "plan": {
+      "interventions": [
+        "seedling size",
+        "stock size",
+        "seedling dimensions",
+        "seedling biomass",
+        "nursery fertilization",
+        "fertilizer application",
+        "nutrient fertilization",
+        "nursery nutrient treatment",
+        "mycorrhizal inoculation",
+        "mycorrhizal symbiont inoculation",
+        "mycorrhizal inoculant application",
+        "AMF inoculation",
+        "competing vegetation",
+        "vegetation competition",
+        "weed competition",
+        "biotic competition",
+        "site preparation",
+        "site prep",
+        "pre-planting site treatment",
+        "site clearing"
       ],
-      "subquestions": [
-        {
-          "intervention": "seed-mix species",
-          "outcome": "establishment in dry deciduous forest"
-        },
-        {
-          "intervention": "seed-mix species",
-          "outcome": "persistence in dry deciduous forest"
-        },
-        {
-          "intervention": "seed-mix species",
-          "outcome": "self-seeding in dry deciduous forest"
-        },
-        {
-          "intervention": "seed-mix species",
-          "outcome": "establishment in wet deciduous forest"
-        },
-        {
-          "intervention": "seed-mix species",
-          "outcome": "persistence in wet deciduous forest"
-        },
-        {
-          "intervention": "seed-mix species",
-          "outcome": "self-seeding in wet deciduous forest"
-        },
-        {
-          "intervention": "seed-mix species",
-          "outcome": "establishment in meadow"
-        },
-        {
-          "intervention": "seed-mix species",
-          "outcome": "persistence in meadow"
-        },
-        {
-          "intervention": "seed-mix species",
-          "outcome": "self-seeding in meadow"
-        },
-        {
-          "intervention": "seed-mix species",
-          "outcome": "establishment in riparian"
-        },
-        {
-          "intervention": "seed-mix species",
-          "outcome": "persistence in riparian"
-        },
-        {
-          "intervention": "seed-mix species",
-          "outcome": "self-seeding in riparian"
-        }
-      ],
-      "synonyms": {
-        "seed-mix species": [
-          "seed mix species",
-          "restoration seed species",
-          "sown species",
-          "seeded species",
-          "planting mix species"
-        ],
-        "establishment": [
-          "germination",
-          "seedling establishment",
-          "initial establishment",
-          "colonization",
-          "settlement"
-        ],
-        "persistence": [
-          "survival",
-          "population persistence",
-          "long-term survival",
-          "maintenance",
-          "retention"
-        ],
-        "self-seeding": [
-          "self-sowing",
-          "self-recruitment",
-          "natural regeneration",
-          "seedling recruitment",
-          "autonomous recruitment"
-        ],
-        "Ontario ELC ecosite": [
-          "EcoLand Classification",
-          "ELC ecosite",
-          "ecosite type",
-          "site type",
-          "ecological land classification"
-        ],
-        "dry deciduous forest": [
-          "dry broadleaf forest",
-          "dry deciduous woodland",
-          "dry forest",
-          "dry deciduous",
-          "dry broadleaf woodland"
-        ],
-        "wet deciduous forest": [
-          "wet broadleaf forest",
-          "wet deciduous woodland",
-          "wet forest",
-          "wet deciduous",
-          "wet broadleaf woodland"
-        ],
-        "meadow": [
-          "grassland",
-          "herbaceous meadow",
-          "prairie",
-          "field",
-          "open meadow"
-        ],
-        "riparian": [
-          "riparian corridor",
-          "streamside",
-          "floodplain",
-          "riparian woodland",
-          "riparian zone"
-        ]
-      }
+      "outcomes": [
+        "survival",
+        "seedling survival",
+        "plant survival",
+        "survival rate",
+        "growth",
+        "seedling growth",
+        "plant growth",
+        "growth rate"
+      ]
     }
   },
   "c7": {
@@ -144,109 +72,33 @@
     "question": "How long do created marshes take to reach biodiversity and function comparable  to natural reference wetlands, and which attributes lag?",
     "plan": {
       "interventions": [
-        "created marsh",
-        "constructed wetland",
-        "restored wetland",
-        "natural reference wetland",
+        "created marshes",
+        "constructed marshes",
+        "created wetlands",
+        "constructed wetlands",
+        "marsh creation",
         "wetland creation",
-        "wetland restoration"
+        "marsh construction",
+        "wetland construction"
       ],
       "outcomes": [
-        "time to comparable biodiversity",
-        "time to comparable ecosystem function",
         "biodiversity",
+        "biological diversity",
+        "species richness",
+        "diversity",
+        "wetland function",
+        "wetland ecosystem function",
+        "marsh function",
         "ecosystem function",
+        "time to reach comparable biodiversity and function",
+        "recovery time",
+        "time to reference condition",
+        "time to functional equivalence",
         "lagging attributes",
-        "functional equivalence",
-        "species richness"
-      ],
-      "subquestions": [
-        {
-          "intervention": "created marsh",
-          "outcome": "time to comparable biodiversity"
-        },
-        {
-          "intervention": "created marsh",
-          "outcome": "time to comparable ecosystem function"
-        },
-        {
-          "intervention": "created marsh",
-          "outcome": "lagging attributes"
-        },
-        {
-          "intervention": "constructed wetland",
-          "outcome": "time to comparable biodiversity"
-        },
-        {
-          "intervention": "constructed wetland",
-          "outcome": "time to comparable ecosystem function"
-        },
-        {
-          "intervention": "constructed wetland",
-          "outcome": "lagging attributes"
-        },
-        {
-          "intervention": "restored wetland",
-          "outcome": "time to comparable biodiversity"
-        },
-        {
-          "intervention": "restored wetland",
-          "outcome": "time to comparable ecosystem function"
-        },
-        {
-          "intervention": "restored wetland",
-          "outcome": "lagging attributes"
-        },
-        {
-          "intervention": "created marsh",
-          "outcome": "functional equivalence"
-        },
-        {
-          "intervention": "created marsh",
-          "outcome": "species richness"
-        },
-        {
-          "intervention": "natural reference wetland",
-          "outcome": "biodiversity"
-        }
-      ],
-      "synonyms": {
-        "created marsh": [
-          "constructed wetland",
-          "artificial wetland",
-          "restored wetland",
-          "engineered wetland",
-          "created wetland"
-        ],
-        "natural reference wetland": [
-          "reference wetland",
-          "natural wetland",
-          "pristine wetland",
-          "intact wetland",
-          "unmanaged wetland"
-        ],
-        "biodiversity": [
-          "species richness",
-          "biological diversity",
-          "taxonomic diversity",
-          "community diversity",
-          "species abundance"
-        ],
-        "ecosystem function": [
-          "wetland function",
-          "ecosystem services",
-          "functional equivalence",
-          "hydrologic function",
-          "biogeochemical function"
-        ],
-        "lagging attributes": [
-          "delayed attributes",
-          "slowly recovering attributes",
-          "non-equivalent attributes",
-          "lagging indicators",
-          "deficit attributes"
-        ]
-      }
+        "delayed attributes",
+        "slow-recovering attributes",
+        "lagging wetland attributes"
+      ]
     }
   },
   "c13-modified": {
@@ -254,125 +106,33 @@
     "question": "After wildfire in boreal forests, what controls natural conifer regeneration (fire interval, fire severity, seed supply, seedbed type), and which conditions signal that regeneration will fail without active restoration?",
     "plan": {
       "interventions": [
-        "wildfire",
         "fire interval",
+        "fire return interval",
+        "time since fire",
+        "fire frequency",
         "fire severity",
+        "burn severity",
+        "fire intensity",
+        "disturbance severity",
         "seed supply",
+        "seed availability",
+        "seed source",
+        "seed rain",
         "seedbed type",
-        "active restoration",
-        "no active restoration",
-        "boreal forest"
+        "seedbed condition",
+        "soil seedbed",
+        "seedbed quality"
       ],
       "outcomes": [
         "natural conifer regeneration",
-        "conifer regeneration success",
-        "conifer regeneration failure",
+        "conifer recruitment",
+        "natural regeneration",
         "conifer seedling establishment",
-        "post-fire conifer density",
-        "conifer stand recovery",
-        "regeneration without active restoration",
-        "restoration-dependent regeneration"
-      ],
-      "subquestions": [
-        {
-          "intervention": "wildfire",
-          "outcome": "natural conifer regeneration"
-        },
-        {
-          "intervention": "fire interval",
-          "outcome": "natural conifer regeneration"
-        },
-        {
-          "intervention": "fire severity",
-          "outcome": "natural conifer regeneration"
-        },
-        {
-          "intervention": "seed supply",
-          "outcome": "natural conifer regeneration"
-        },
-        {
-          "intervention": "seedbed type",
-          "outcome": "natural conifer regeneration"
-        },
-        {
-          "intervention": "fire interval",
-          "outcome": "conifer regeneration failure"
-        },
-        {
-          "intervention": "fire severity",
-          "outcome": "conifer regeneration failure"
-        },
-        {
-          "intervention": "seed supply",
-          "outcome": "conifer regeneration failure"
-        },
-        {
-          "intervention": "seedbed type",
-          "outcome": "conifer regeneration failure"
-        },
-        {
-          "intervention": "active restoration",
-          "outcome": "conifer regeneration success"
-        },
-        {
-          "intervention": "no active restoration",
-          "outcome": "conifer regeneration failure"
-        },
-        {
-          "intervention": "fire severity",
-          "outcome": "conifer seedling establishment"
-        }
-      ],
-      "synonyms": {
-        "natural conifer regeneration": [
-          "conifer regeneration",
-          "post-fire conifer regeneration",
-          "natural regeneration",
-          "conifer seedling establishment"
-        ],
-        "fire interval": [
-          "time since fire",
-          "fire return interval",
-          "fire frequency",
-          "burn interval"
-        ],
-        "fire severity": [
-          "burn severity",
-          "fire intensity",
-          "post-fire disturbance severity",
-          "soil burn severity"
-        ],
-        "seed supply": [
-          "seed availability",
-          "seed source",
-          "conifer seed source",
-          "seed rain"
-        ],
-        "seedbed type": [
-          "seedbed condition",
-          "soil seedbed",
-          "post-fire seedbed",
-          "nurse log seedbed"
-        ],
-        "active restoration": [
-          "restoration treatment",
-          "active reforestation",
-          "assisted regeneration",
-          "conifer planting"
-        ],
-        "conifer regeneration failure": [
-          "regeneration failure",
-          "poor conifer regeneration",
-          "lack of conifer regeneration",
-          "conifer recruitment failure"
-        ],
-        "boreal forest": [
-          "boreal woodland",
-          "northern forest",
-          "taiga",
-          "boreal ecosystem"
-        ]
-      }
+        "conifer regeneration failure",
+        "regeneration failure",
+        "lack of conifer regeneration",
+        "failed regeneration"
+      ]
     }
   },
   "b1": {
@@ -381,362 +141,32 @@
     "plan": {
       "interventions": [
         "partial harvesting",
+        "partial cut",
+        "partial harvest",
+        "selective logging",
         "clearcutting",
+        "clearcut",
+        "clear felling",
+        "full harvest",
         "retained woody debris",
+        "coarse woody debris",
+        "CWD",
+        "deadwood retention",
         "riparian retention",
-        "partial harvesting versus clearcutting",
-        "harvesting intensity",
-        "forest management",
-        "Canadian forest context"
+        "riparian buffer",
+        "riparian forest retention",
+        "riparian reserve"
       ],
       "outcomes": [
-        "biodiversity",
+        "biodiversity maintenance",
+        "biodiversity conservation",
+        "biodiversity persistence",
+        "maintaining biodiversity",
         "biodiversity recovery",
-        "species richness",
-        "species abundance",
-        "community composition",
-        "habitat quality",
-        "ecosystem recovery",
-        "ecological integrity"
-      ],
-      "subquestions": [
-        {
-          "intervention": "partial harvesting",
-          "outcome": "biodiversity"
-        },
-        {
-          "intervention": "partial harvesting",
-          "outcome": "biodiversity recovery"
-        },
-        {
-          "intervention": "clearcutting",
-          "outcome": "biodiversity"
-        },
-        {
-          "intervention": "clearcutting",
-          "outcome": "biodiversity recovery"
-        },
-        {
-          "intervention": "retained woody debris",
-          "outcome": "biodiversity"
-        },
-        {
-          "intervention": "retained woody debris",
-          "outcome": "biodiversity recovery"
-        },
-        {
-          "intervention": "riparian retention",
-          "outcome": "biodiversity"
-        },
-        {
-          "intervention": "riparian retention",
-          "outcome": "biodiversity recovery"
-        },
-        {
-          "intervention": "partial harvesting versus clearcutting",
-          "outcome": "biodiversity"
-        },
-        {
-          "intervention": "partial harvesting versus clearcutting",
-          "outcome": "biodiversity recovery"
-        },
-        {
-          "intervention": "retained woody debris",
-          "outcome": "species richness"
-        },
-        {
-          "intervention": "riparian retention",
-          "outcome": "habitat quality"
-        }
-      ],
-      "synonyms": {
-        "partial harvesting": [
-          "partial cut",
-          "selective logging",
-          "partial harvest",
-          "thinning",
-          "partial clearcut"
-        ],
-        "clearcutting": [
-          "clearcut",
-          "clear cutting",
-          "full harvest",
-          "clear-felling"
-        ],
-        "retained woody debris": [
-          "coarse woody debris",
-          "CWD",
-          "retained logs",
-          "deadwood",
-          "snags"
-        ],
-        "riparian retention": [
-          "riparian buffer",
-          "riparian reserve",
-          "riparian forest retention",
-          "streamside management zone"
-        ],
-        "biodiversity": [
-          "species diversity",
-          "biological diversity",
-          "alpha diversity",
-          "beta diversity",
-          "gamma diversity"
-        ],
-        "biodiversity recovery": [
-          "recovery of biodiversity",
-          "biodiversity rebound",
-          "post-harvest recovery",
-          "ecological recovery",
-          "recolonization"
-        ],
-        "Canadian forest context": [
-          "Canadian forest",
-          "boreal forest",
-          "temperate rainforest",
-          "Canadian boreal",
-          "Canadian temperate forest"
-        ],
-        "habitat quality": [
-          "habitat suitability",
-          "habitat condition",
-          "structural complexity",
-          "forest structure",
-          "habitat heterogeneity"
-        ]
-      }
-    }
-  },
-  "b2": {
-    "kind": "intervention_outcomes",
-    "question": "Which restoration actions, such as peatland rewetting, moss layer transfer or salt marsh realignment, turn degraded sites back into carbon sinks, and what happens to methane emissions?",
-    "plan": {
-      "interventions": [
-        "peatland rewetting",
-        "moss layer transfer",
-        "salt marsh realignment",
-        "wetland restoration",
-        "degraded peatland restoration",
-        "degraded salt marsh restoration",
-        "hydrological restoration",
-        "Sphagnum transfer",
-        "managed realignment"
-      ],
-      "outcomes": [
-        "carbon sink status",
-        "net carbon sequestration",
-        "carbon storage",
-        "CO2 flux",
-        "methane emissions",
-        "CH4 flux",
-        "carbon balance"
-      ],
-      "subquestions": [
-        {
-          "intervention": "peatland rewetting",
-          "outcome": "carbon sink status"
-        },
-        {
-          "intervention": "peatland rewetting",
-          "outcome": "methane emissions"
-        },
-        {
-          "intervention": "moss layer transfer",
-          "outcome": "carbon sink status"
-        },
-        {
-          "intervention": "moss layer transfer",
-          "outcome": "methane emissions"
-        },
-        {
-          "intervention": "salt marsh realignment",
-          "outcome": "carbon sink status"
-        },
-        {
-          "intervention": "salt marsh realignment",
-          "outcome": "methane emissions"
-        },
-        {
-          "intervention": "degraded wetland restoration",
-          "outcome": "net carbon sequestration"
-        },
-        {
-          "intervention": "degraded wetland restoration",
-          "outcome": "CH4 flux"
-        }
-      ],
-      "synonyms": {
-        "peatland rewetting": [
-          "rewetting",
-          "re-wetting",
-          "hydrological restoration",
-          "water table management",
-          "drainage reversal"
-        ],
-        "moss layer transfer": [
-          "Sphagnum transfer",
-          "Sphagnum augmentation",
-          "moss mat translocation",
-          "biological restoration",
-          "peat moss transfer"
-        ],
-        "salt marsh realignment": [
-          "managed realignment",
-          "marsh relocation",
-          "coastal wetland realignment",
-          "estuarine realignment"
-        ],
-        "carbon sink": [
-          "net carbon uptake",
-          "carbon sequestration",
-          "carbon storage",
-          "negative net CO2 flux",
-          "positive carbon balance",
-          "C sink"
-        ],
-        "methane emissions": [
-          "CH4 emissions",
-          "CH4 flux",
-          "methane flux",
-          "methane release"
-        ],
-        "degraded sites": [
-          "degraded peatland",
-          "degraded wetland",
-          "disturbed peatland",
-          "degraded salt marsh",
-          "restored wetland"
-        ]
-      }
-    }
-  },
-  "b4": {
-    "kind": "intervention_outcomes",
-    "question": "What lethal and sub-lethal effects do contaminants such as oil sands tailings, PCBs and acid deposition have on wildlife and aquatic communities, and do remediation actions allow them to recover?",
-    "plan": {
-      "interventions": [
-        "oil sands tailings exposure",
-        "PCB exposure",
-        "acid deposition",
-        "remediation actions",
-        "unremediated contaminated site"
-      ],
-      "outcomes": [
-        "wildlife mortality",
-        "aquatic community abundance",
-        "wildlife sub-lethal stress",
-        "aquatic community species richness",
-        "reproductive success",
-        "survival",
-        "population recovery",
-        "community recovery"
-      ],
-      "subquestions": [
-        {
-          "intervention": "oil sands tailings exposure",
-          "outcome": "wildlife mortality"
-        },
-        {
-          "intervention": "oil sands tailings exposure",
-          "outcome": "wildlife sub-lethal stress"
-        },
-        {
-          "intervention": "oil sands tailings exposure",
-          "outcome": "aquatic community abundance"
-        },
-        {
-          "intervention": "PCB exposure",
-          "outcome": "wildlife mortality"
-        },
-        {
-          "intervention": "PCB exposure",
-          "outcome": "wildlife sub-lethal stress"
-        },
-        {
-          "intervention": "PCB exposure",
-          "outcome": "reproductive success"
-        },
-        {
-          "intervention": "acid deposition",
-          "outcome": "wildlife mortality"
-        },
-        {
-          "intervention": "acid deposition",
-          "outcome": "aquatic community species richness"
-        },
-        {
-          "intervention": "acid deposition",
-          "outcome": "wildlife sub-lethal stress"
-        },
-        {
-          "intervention": "remediation actions",
-          "outcome": "population recovery"
-        },
-        {
-          "intervention": "remediation actions",
-          "outcome": "community recovery"
-        },
-        {
-          "intervention": "unremediated contaminated site",
-          "outcome": "community recovery"
-        }
-      ],
-      "synonyms": {
-        "oil sands tailings": [
-          "oil sands tailings pond",
-          "bitumen tailings",
-          "OS tailings",
-          "tailings pond",
-          "oil sands process water"
-        ],
-        "PCBs": [
-          "polychlorinated biphenyls",
-          "PCB congeners",
-          "Aroclor",
-          "chlorinated biphenyls"
-        ],
-        "acid deposition": [
-          "acid rain",
-          "acid precipitation",
-          "acidification",
-          "sulfur dioxide deposition",
-          "nitrogen deposition"
-        ],
-        "lethal effects": [
-          "mortality",
-          "death",
-          "lethality",
-          "case fatality"
-        ],
-        "sub-lethal effects": [
-          "sublethal effects",
-          "physiological stress",
-          "behavioral impairment",
-          "reproductive impairment",
-          "growth impairment"
-        ],
-        "wildlife": [
-          "terrestrial fauna",
-          "birds",
-          "mammals",
-          "amphibians",
-          "reptiles"
-        ],
-        "aquatic communities": [
-          "freshwater communities",
-          "stream communities",
-          "lake communities",
-          "benthic communities",
-          "fish communities"
-        ],
-        "remediation actions": [
-          "remediation",
-          "restoration",
-          "cleanup",
-          "mitigation",
-          "rehabilitation"
-        ]
-      }
+        "biodiversity rebound",
+        "recovery of biodiversity",
+        "post-harvest biodiversity recovery"
+      ]
     }
   }
 }
