@@ -1,0 +1,16 @@
+
+questions:
+  - id: c3
+    kind: species_selection
+    question: >-
+      Which seed-mix species establish, persist and self-seed in each Ontario ELC 
+      ecosite type (e.g. dry/wet deciduous forest, meadow, riparian)?
+
+  - id: c4-modified
+    kind: intervention_outcomes
+    question: >-
+      For tree planting in Canadian forest restoration, how do planting-stock
+      traits (seedling size, nursery fertilization, mycorrhizal inoculation)
+      affect survival and growth, and how do competing vegetation and site
+      preparation change that?
+    

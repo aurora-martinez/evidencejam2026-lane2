@@ -54,8 +54,12 @@ ANSWER STYLE
 - Do not mention internal retrieval scores or implementation details.
 - If evidence only addresses part of the question,
   explicitly identify what remains unanswered.
-
-If the evidence is insufficient to answer a part
+- Summarize each publication in 2/3 sentences maximum.
+- Include publication year and location when available.
+- Distinguish positive, negative, mixed, and non-significant findings.
+- Never treat multiple edges from one publication as multiple independent studies.
+- Explicitly state when evidence is insufficient.
+- If the evidence is insufficient to answer a part
 of the question, say so explicitly.
 """
 

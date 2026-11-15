@@ -1,0 +1,38 @@
+{
+  "interventions": [
+    "created marshes"
+  ],
+  "outcomes": [
+    "time to reach comparable biodiversity and function",
+    "biodiversity",
+    "ecosystem function",
+    "lagging attributes"
+  ],
+  "synonyms": {
+    "created marshes": [
+      "constructed marshes",
+      "restored marshes",
+      "artificial marshes"
+    ],
+    "time to reach comparable biodiversity and function": [
+      "recovery time",
+      "time to equivalence",
+      "time to functional and biodiversity equivalence"
+    ],
+    "biodiversity": [
+      "biological diversity",
+      "species richness",
+      "biotic diversity"
+    ],
+    "ecosystem function": [
+      "wetland function",
+      "ecological function",
+      "functional equivalence"
+    ],
+    "lagging attributes": [
+      "delayed attributes",
+      "slowly recovering attributes",
+      "attributes with lag"
+    ]
+  }
+}

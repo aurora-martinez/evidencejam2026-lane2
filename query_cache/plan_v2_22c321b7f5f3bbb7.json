@@ -1,0 +1,44 @@
+{
+  "interventions": [
+    "partial harvesting",
+    "clearcutting",
+    "retained woody debris",
+    "riparian retention"
+  ],
+  "outcomes": [
+    "biodiversity maintenance",
+    "biodiversity recovery speed"
+  ],
+  "synonyms": {
+    "partial harvesting": [
+      "partial cut",
+      "partial harvest",
+      "selective logging"
+    ],
+    "clearcutting": [
+      "clearcut",
+      "clear felling",
+      "clear-felling"
+    ],
+    "retained woody debris": [
+      "coarse woody debris retention",
+      "deadwood retention",
+      "retained deadwood"
+    ],
+    "riparian retention": [
+      "riparian buffer retention",
+      "riparian forest retention",
+      "riparian protection"
+    ],
+    "biodiversity maintenance": [
+      "biodiversity conservation",
+      "species richness maintenance",
+      "biological diversity maintenance"
+    ],
+    "biodiversity recovery speed": [
+      "biodiversity recovery rate",
+      "post-harvest biodiversity recovery",
+      "biodiversity rebound"
+    ]
+  }
+}

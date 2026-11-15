@@ -1,0 +1,130 @@
+
+=================================================================
+QUESTION: c3
+TOTAL EDGES: 1
+UNIQUE SOURCES: 1
+
+SOURCE: 10.1016/j.foreco.2019.117535
+NUMBER OF EDGES: 1
+INTERVENTION: camo:node_c72e02ed9539
+OUTCOME: camo:node_840d2e80fd61
+PREDICATE: associated_with
+NEGATED: False
+EVIDENCE: mean winter survival was significantly (F3,6 = 6.46; P = 0.04) different, among treatment sites with declining survival from the dispersed to forest sites
+
+=================================================================
+QUESTION: c4-modified
+TOTAL EDGES: 20
+UNIQUE SOURCES: 4
+
+SOURCE: 10.5558/tfc86234-2
+NUMBER OF EDGES: 9
+INTERVENTION: camo:node_0493ea899df7
+OUTCOME: camo:node_e2869950aa2e
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: The use of herbicide significantly increased 15-year GLD and volume index of all three conifer species, but only black spruce responded positively to fertilization at planting.
+INTERVENTION: camo:node_0493ea899df7
+OUTCOME: camo:node_0c58c1288ada_variable
+PREDICATE: causes
+NEGATED: True
+EVIDENCE: The use of herbicide significantly increased 15-year GLD and volume index of all three conifer species, but only black spruce responded positively to fertilization at planting.
+INTERVENTION: camo:node_0493ea899df7
+OUTCOME: camo:node_e178e0818381_variable
+PREDICATE: causes
+NEGATED: True
+EVIDENCE: The use of herbicide significantly increased 15-year GLD and volume index of all three conifer species, but only black spruce responded positively to fertilization at planting.
+INTERVENTION: camo:node_516521cee3f4
+OUTCOME: camo:node_c26499ad10dd
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: 19.5 cm without fertilization compared to 25 cm in fertilized treatments
+INTERVENTION: camo:node_43fc59177244
+OUTCOME: camo:node_c657cc8c3515
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: Jack pine was the only species where estimated foliar biomass was not greater in fertilized treatments compared to unfertilized treatments
+INTERVENTION: camo:node_43fc59177244
+OUTCOME: camo:node_0f3d23a08fef_variable
+PREDICATE: causes
+NEGATED: True
+EVIDENCE: Jack pine was the only species where estimated foliar biomass was not greater in fertilized treatments compared to unfertilized treatments
+INTERVENTION: camo:node_43fc59177244
+OUTCOME: camo:node_affebce6bb08
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: Jack pine was the only species where estimated foliar biomass was not greater in fertilized treatments compared to unfertilized treatments
+INTERVENTION: camo:node_605da333434d
+OUTCOME: camo:node_775b399b5c58
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: For example, growth of pine and tamarack after 15 years (i.e., 15th-year leader growth) was no longer influenced by scarification, herbicide or fertilization treatments, while black spruce leader growth was almost doubled by scarification or herbicide application, and increased by 28% with fertilization.
+INTERVENTION: camo:node_0b4659ea2eca
+OUTCOME: camo:node_3b43f614b262_variable
+PREDICATE: causes
+NEGATED: True
+EVIDENCE: For example, growth of pine and tamarack after 15 years (i.e., 15th-year leader growth) was no longer influenced by scarification, herbicide or fertilization treatments, while black spruce leader growth was almost doubled by scarification or herbicide application, and increased by 28% with fertilization.
+
+SOURCE: 10.1016/j.foreco.2016.03.034
+NUMBER OF EDGES: 2
+INTERVENTION: camo:node_3dc0d383e8dd
+OUTCOME: camo:node_c39cfda39e04
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: Exponential fertilization increased new stem, old stem, root, and total biomass in the first growing season and leaf, new stem and total biomass in the second growing season (all P < 0.05) on the PMM site.
+INTERVENTION: camo:node_3dc0d383e8dd
+OUTCOME: camo:node_c39cfda39e04
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: On the LFH site, the increase (by 34%) was in new stem biomass (P = 0.03) during the first growing season and leaf (by 50%, P = 0.02), new stem (by 69%, P = 0.01), old stem (by 41%, P < 0.01) and total biomass (by 36%, P < 0.01) in the second growing season.
+
+SOURCE: 10.1016/j.foreco.2015.10.024
+NUMBER OF EDGES: 5
+INTERVENTION: camo:node_a7721e3486c8
+OUTCOME: camo:node_189864173998
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: seedlings that had received CRF out-performing unfertilized seedlings
+INTERVENTION: camo:node_a7721e3486c8
+OUTCOME: camo:node_c4c91d3124b1
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: Average organ biomass of seedlings that had received CRF increased significantly compared with those that received either no fertilizer or IAF.
+INTERVENTION: camo:node_295c2b17ea57
+OUTCOME: camo:node_189864173998
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: seedlings that had received CRF out-performing unfertilized seedlings, but not differing from IAF treatments
+INTERVENTION: camo:node_900b1dc14397
+OUTCOME: camo:node_e3431ed4a436_variable
+PREDICATE: causes
+NEGATED: True
+EVIDENCE: Seedling survival was not influenced by species or fertilizer treatment
+INTERVENTION: camo:node_900b1dc14397
+OUTCOME: camo:node_259a57f27c15_variable
+PREDICATE: causes
+NEGATED: True
+EVIDENCE: No significant fertilizer or species effects were observed for first season height growth (P = 0.22; data not shown)
+
+SOURCE: 10.1139/x06-090
+NUMBER OF EDGES: 4
+INTERVENTION: camo:node_6cbda9ce2e36
+OUTCOME: camo:node_900157c61561
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: Independently of scarification or initial N concentration, seedlings fertilized with Forest Paks (F1) had greater aboveground biomass than seedlings fertilized with Silva Paks (F2) (Table 3).
+INTERVENTION: camo:node_6cbda9ce2e36
+OUTCOME: camo:node_a7f691bbc24d
+PREDICATE: moderates
+NEGATED: False
+EVIDENCE: The positive effect of scarification (either S1 or S2) on GLD and biomass was enhanced when seedlings were fertilized (with either F1 or F2) (Table 3, Fig. 3).
+INTERVENTION: camo:node_0067ac205c9d
+OUTCOME: camo:node_f34ce04d820b
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: Ninety-nine percent of the unfertilized seedlings remained alive until October 2002, a proportion that was significantly higher than for both types of fertilized seedlings (*p* ≤ 0.012
+INTERVENTION: camo:node_b4230ddcd0f2
+OUTCOME: camo:node_8213d29ed59f
+PREDICATE: causes
+NEGATED: False
+EVIDENCE: The positive effect of fertilization on height was maximized at the end of the second growing season for the seedlings with the lowest initial N concentration (N1) (Fig. 2).

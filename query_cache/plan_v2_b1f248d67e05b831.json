@@ -1,0 +1,38 @@
+{
+  "interventions": [
+    "seed-mix species",
+    "Ontario ELC ecosite type"
+  ],
+  "outcomes": [
+    "establishment",
+    "persistence",
+    "self-seeding"
+  ],
+  "synonyms": {
+    "seed-mix species": [
+      "seed mix",
+      "restoration seed mix",
+      "seed mixture"
+    ],
+    "Ontario ELC ecosite type": [
+      "Ecological Land Classification ecosite",
+      "EC ecosite",
+      "site type"
+    ],
+    "establishment": [
+      "colonization",
+      "germination and establishment",
+      "plant establishment"
+    ],
+    "persistence": [
+      "survival",
+      "long-term survival",
+      "continued presence"
+    ],
+    "self-seeding": [
+      "autoseeding",
+      "seed production",
+      "natural regeneration"
+    ]
+  }
+}

@@ -4,7 +4,7 @@
     {
       "id": "c3",
       "status": "answered",
-      "answer": "The supplied evidence is insufficient to answer the question about which seed-mix species establish, persist, and self-seed in Ontario ELC ecosite types such as dry or wet deciduous forest, meadow, or riparian habitats.\n\nThe only retrieved relationship concerns **M. gapperi** and reports that **mean winter survival was higher at dispersed treatment sites** than at forest sites, with survival declining from dispersed to forest sites. This relationship is described as **associational**, not causal, and is assigned **low certainty**. It therefore indicates a statistical association between treatment site type and winter survival of M. gapperi, but it does not demonstrate that dispersed site type caused higher survival.\n\nThis evidence does not identify:\n\n- the seed-mix species used or evaluated;\n- which species established in any habitat;\n- which species persisted over time;\n- which species self-seeded;\n- Ontario ELC ecosite types;\n- dry deciduous forest, wet deciduous forest, meadow, or riparian conditions;\n- establishment, persistence, or self-seeding metrics.\n\nThus, no conclusion can be drawn from the supplied evidence about seed-mix species performance across Ontario ELC ecosite types. The only supported finding is a low-certainty association between dispersed treatment sites and higher winter survival of M. gapperi, which is not directly equivalent to establishment, persistence, or self-seeding in the ecosite types asked about.",
+      "answer": "The retrieved graph evidence suggests an increase in higher mean winter survival of M. gapperi associated with treatment site type (dispersed sites). Based on 1 retrieved graph edge.",
       "direction": "increase",
       "confidence": 0.7,
       "certainty": "low",
@@ -17,116 +17,31 @@
     {
       "id": "c4-modified",
       "status": "answered",
-      "answer": "The retrieved graph evidence contains different reported outcome directions. Based on 13 retrieved graph edges.",
-      "direction": "mixed",
-      "confidence": 0.688,
+      "answer": "The retrieved graph evidence suggests an increase in Increased seedling biomass associated with Fertilizer application. Based on 20 retrieved graph edges.",
+      "direction": "increase",
+      "confidence": 0.804,
       "certainty": "moderate",
       "edge_ids": [
+        "camo:edge_4ec17738dc6f",
+        "camo:edge_ed5dd4b0434b",
+        "camo:edge_6b9afb321f2c",
         "camo:edge_6bfff4b7b1a0",
         "camo:edge_4b5a90a48179",
         "camo:edge_a17bba572e9b",
         "camo:edge_8d09b599854f",
+        "camo:edge_a4ba3ab8148c",
+        "camo:edge_dd253d9b4352",
+        "camo:edge_4de9efbfec5c",
+        "camo:edge_ddfed005df71",
         "camo:edge_7fd63852f9f5",
         "camo:edge_6cc2e113d5e8",
-        "camo:edge_80cab24ba4b9",
-        "camo:edge_3029569325b5",
-        "camo:edge_34a7e01db4b1",
-        "camo:edge_4b3f99da883a",
-        "camo:edge_405401483b91",
-        "camo:edge_408465bc9dcf",
-        "camo:edge_7164fb680f66"
-      ],
-      "searched_for": null,
-      "extras": []
-    },
-    {
-      "id": "c7",
-      "status": "no_evidence",
-      "answer": "No direct graph evidence was retrieved to answer this question.",
-      "direction": null,
-      "confidence": 0.45,
-      "certainty": null,
-      "edge_ids": [],
-      "searched_for": "No direct edge found between intervention terms ['created marshes', 'constructed marshes', 'created wetlands', 'constructed wetlands', 'marsh creation', 'wetland creation', 'marsh construction', 'wetland construction'] and outcome terms ['biodiversity', 'biological diversity', 'species richness', 'diversity', 'wetland function', 'wetland ecosystem function', 'marsh function', 'ecosystem function', 'time to reach comparable biodiversity and function', 'recovery time', 'time to reference condition', 'time to functional equivalence', 'lagging attributes', 'delayed attributes', 'slow-recovering attributes', 'lagging wetland attributes']. Indirect paths were not checked.",
-      "extras": []
-    },
-    {
-      "id": "c13-modified",
-      "status": "no_evidence",
-      "answer": "No direct graph evidence was retrieved to answer this question.",
-      "direction": null,
-      "confidence": 0.45,
-      "certainty": null,
-      "edge_ids": [],
-      "searched_for": "No direct edge found between intervention terms ['fire interval', 'fire return interval', 'time since fire', 'fire frequency', 'fire severity', 'burn severity', 'fire intensity', 'disturbance severity', 'seed supply', 'seed availability', 'seed source', 'seed rain', 'seedbed type', 'seedbed condition', 'soil seedbed', 'seedbed quality'] and outcome terms ['natural conifer regeneration', 'conifer recruitment', 'natural regeneration', 'conifer seedling establishment', 'conifer regeneration failure', 'regeneration failure', 'lack of conifer regeneration', 'failed regeneration']. Indirect paths were not checked.",
-      "extras": []
-    },
-    {
-      "id": "c16-modified",
-      "status": "no_evidence",
-      "answer": "No direct graph evidence was retrieved to answer this question.",
-      "direction": null,
-      "confidence": 0.5,
-      "certainty": null,
-      "edge_ids": [],
-      "searched_for": "No direct edge found between intervention terms ['grassland restoration', 'grassland rehabilitation', 'grassland recovery', 'prairie restoration'] and outcome terms []. Indirect paths were not checked.",
-      "extras": []
-    },
-    {
-      "id": "b1",
-      "status": "no_evidence",
-      "answer": "No direct graph evidence was retrieved to answer this question.",
-      "direction": null,
-      "confidence": 0.45,
-      "certainty": null,
-      "edge_ids": [],
-      "searched_for": "No direct edge found between intervention terms ['partial harvesting', 'partial cut', 'partial harvest', 'selective logging', 'clearcutting', 'clearcut', 'clear felling', 'full harvest', 'retained woody debris', 'coarse woody debris', 'CWD', 'deadwood retention', 'riparian retention', 'riparian buffer', 'riparian forest retention', 'riparian reserve'] and outcome terms ['biodiversity maintenance', 'biodiversity conservation', 'biodiversity persistence', 'maintaining biodiversity', 'biodiversity recovery', 'biodiversity rebound', 'recovery of biodiversity', 'post-harvest biodiversity recovery']. Indirect paths were not checked.",
-      "extras": []
-    },
-    {
-      "id": "b2",
-      "status": "answered",
-      "answer": "The retrieved graph evidence suggests an increase in Shift from net carbon source to net carbon sink status associated with Restoration of bare peatland via moss layer transfer technique (MLTT). Based on 1 retrieved graph edge.",
-      "direction": "increase",
-      "confidence": 0.82,
-      "certainty": "moderate",
-      "edge_ids": [
-        "camo:edge_d60c25b60634"
-      ],
-      "searched_for": null,
-      "extras": []
-    },
-    {
-      "id": "b3",
-      "status": "no_evidence",
-      "answer": "No direct graph evidence was retrieved to answer this question.",
-      "direction": null,
-      "confidence": 0.35,
-      "certainty": null,
-      "edge_ids": [],
-      "searched_for": "No direct edge found between intervention terms ['herbicide application', 'herbicide treatment', 'chemical weed control', 'weedicide application', 'glyphosate application', 'glyphosate', 'Roundup', 'glyphosate herbicide'] and outcome terms ['native plant cover', 'native vegetation cover', 'native plant percent cover', 'native plant cover abundance', 'native plant richness', 'native species richness', 'native plant species richness', 'native plant species count']. Indirect paths were not checked.",
-      "extras": []
-    },
-    {
-      "id": "b4",
-      "status": "no_evidence",
-      "answer": "No direct graph evidence was retrieved to answer this question.",
-      "direction": null,
-      "confidence": 0.35,
-      "certainty": null,
-      "edge_ids": [],
-      "searched_for": "No direct edge found between intervention terms ['oil sands tailings', 'oil sands tailings ponds', 'tailings ponds', 'oil sands tailings material', 'PCBs', 'polychlorinated biphenyls', 'polychlorinated biphenyl', 'acid deposition', 'acid rain', 'acid precipitation', 'remediation actions', 'remediation', 'restoration actions', 'cleanup actions'] and outcome terms ['lethal effects on wildlife and aquatic communities', 'mortality', 'lethality', 'death', 'sub-lethal effects on wildlife and aquatic communities', 'sublethal effects', 'sublethal responses', 'non-lethal effects', 'recovery of wildlife and aquatic communities', 'ecological recovery', 'community recovery', 'recovery']. Indirect paths were not checked.",
-      "extras": []
-    },
-    {
-      "id": "b5",
-      "status": "answered",
-      "answer": "The retrieved graph evidence suggests an increase in High recovery rate associated with Harvest disturbances. Based on 1 retrieved graph edge.",
-      "direction": "increase",
-      "confidence": 0.675,
-      "certainty": "low",
-      "edge_ids": [
-        "camo:edge_6b4137227797"
+        "camo:edge_72711e3c7099",
+        "camo:edge_34f2129de4f8",
+        "camo:edge_43ca4b5132bd",
+        "camo:edge_7ab0be2fbee4",
+        "camo:edge_3fb326f2a6c3",
+        "camo:edge_328fc34e258c",
+        "camo:edge_164c002e6832"
       ],
       "searched_for": null,
       "extras": []
