@@ -565,8 +565,8 @@ def build_answer(question, edges, direction):
 
                 # Keep displayed source text concise.
                 words = sentence.split()
-                if len(words) > 25:
-                    sentence = " ".join(words[:25]) + "..."
+                if len(words) > 55:
+                    sentence = " ".join(words[:55]) + "..."
 
                 report.append(
                     f"- {finding['subject']} -> "
@@ -577,10 +577,12 @@ def build_answer(question, edges, direction):
 
     # Overall interpretation
     report.append("OVERALL INTERPRETATION")
-
     report.append(
-        f"The aggregate direction calculated from the retrieved "
-        f"graph edges is: {direction or 'undetermined'}."
+        "The retrieved relationships describe the findings reported "
+        "in these publications. They should not be interpreted as "
+        "a direct answer to every part of the research question. "
+        "Assess the relevance of each publication before drawing "
+        "a conclusion."
     )
 
     report.append(
@@ -697,12 +699,20 @@ def format_answer(question_item, search_result):
     )
 
     # Qwen receives publication-level evidence
-    answer_text = generate_answers(
-        question,
-        search_result,
-        unique_edges,
-        direction
-    )
+    try:
+        answer_text = generate_answer(
+            question,
+            search_result
+        )
+
+        if not answer_text or not answer_text.strip():
+            raise ValueError("Empty answer from Qwen")
+
+    except Exception as e:
+        print(f"Qwen failed: {e}")
+        print("Using deterministic fallback.")
+
+        answer_text = fallback_answer
 
     return {
         "id": question_id,
