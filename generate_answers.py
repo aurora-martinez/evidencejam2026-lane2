@@ -7,7 +7,7 @@ from collections import Counter
 from pathlib import Path
 
 import yaml
-
+import time
 from search import search_question
 from retrieval import nodes, edges as graph_edges
 from answer_generator import generate_answer
@@ -20,7 +20,7 @@ TEAM_NAME = "YC Startup"
 TOP_K = 20
 QUESTION_RETRIES = 2
 RETRY_DELAY = 3
-
+time.sleep(RETRY_DELAY)
 VALID_DIRECTIONS = {
     "increase", "decrease", "no_effect", "mixed", "unclear"
 }
@@ -582,49 +582,6 @@ def generate_answer_text(question, search_result, evidence, direction):
 # QWEN ANSWER GENERATION
 # --------------------------------------------------
 
-def generate_grounded_answer(question, search_result, fallback):
-    """
-    Ask Qwen to interpret retrieved graph evidence
-    and produce a direct, descriptive answer.
-
-    Falls back to the deterministic answer if
-    Qwen fails.
-    """
-
-    try:
-        answer = generate_answer(
-            question,
-            search_result
-        )
-
-        if not isinstance(answer, str) or not answer.strip():
-            raise ValueError(
-                "Qwen returned an empty answer."
-            )
-
-        return answer.strip()
-
-    except Exception as error:
-
-        print(
-            "Qwen answer generation failed: "
-            f"{type(error).__name__}: {error}",
-            flush=True
-        )
-
-        print(
-            "Using the fallback answer instead.",
-            flush=True
-        )
-
-        return fallback
-
-    
-# --------------------------------------------------
-# FORMAT ONE ANSWER
-# --------------------------------------------------
-
-
 def format_answer(question_item, search_result):
 
     question_id = str(question_item["id"])
@@ -765,7 +722,7 @@ def processing_failure_answer(question_item, error):
 
     return {
         "id": str(question_item["id"]),
-        "status": "no_evidence",
+        "status": "processing_error",
         "answer": (
             "Unable to determine an answer because "
             "question processing did not complete."
