@@ -67,10 +67,6 @@ def validate_plan(plan):
 
     for concept, terms in synonyms.items():
 
-        if concept not in concepts:
-              print(f"Skipping unmatched synonym concept: {concept}")
-        continue
-
         if not isinstance(terms, list):
             raise ValueError(
                 f"Synonyms for {concept} must be a list."
@@ -220,10 +216,6 @@ def plan_question(question, question_id=None):
             ) as file:
                 cached = json.load(file)
 
-            print(
-                "Loading cached search plan...",
-                flush=True
-            )
 
             return merge_search_terms(
                 validate_plan(cached)
@@ -313,12 +305,7 @@ QUESTION:
 {question}
 """
 
-    print(
-        f"Qwen interpreting question "
-        f"{question_id or ''}...",
-        flush=True
-    )
-
+   
     # ----------------------------------------------
     # QWEN API REQUEST WITH AUTOMATIC RETRIES
     # ----------------------------------------------
@@ -328,11 +315,6 @@ QUESTION:
     for attempt in range(2):
 
         try:
-            print(
-                f"Contacting Qwen "
-                f"(attempt {attempt + 1}/2)...",
-                flush=True
-            )
 
             response = client.chat.completions.create(
                 model=os.environ["BRINE_MODEL"],
@@ -356,19 +338,12 @@ QUESTION:
                 temperature=0
             )
 
-            print(
-                "Qwen response received!",
-                flush=True
-            )
+            
 
             break
 
         except (APITimeoutError, APIConnectionError) as error:
 
-            print(
-                f"Qwen request failed: {error}",
-                flush=True
-            )
 
             if attempt == 1:
                 raise RuntimeError(
@@ -377,10 +352,6 @@ QUESTION:
                     "availability and try again."
                 ) from error
 
-            print(
-                "Waiting 2 seconds before retrying...",
-                flush=True
-            )
 
             time.sleep(2)
 
@@ -401,18 +372,7 @@ QUESTION:
     # DEBUG OUTPUT
     # ----------------------------------------------
 
-    print(
-        "\n========== RAW QWEN RESPONSE =========="
-    )
-    print(content)
-    print(
-        "========== END RESPONSE ==========\n"
-    )
-
-    print(
-        "Finish reason:",
-        choice.finish_reason
-    )
+   
 
     # ----------------------------------------------
     # PARSE AND VALIDATE
@@ -430,10 +390,6 @@ QUESTION:
 
     except (json.JSONDecodeError, ValueError) as error:
 
-        print(
-            "JSON parsing or validation failed:",
-            error
-        )
 
         debug_path = (
             CACHE_DIR / "debug_response.txt"
@@ -446,10 +402,7 @@ QUESTION:
         ) as file:
             file.write(content)
 
-        print(
-            f"Raw response saved to: {debug_path}"
-        )
-
+    
         raise
 
     # ----------------------------------------------
@@ -468,10 +421,6 @@ QUESTION:
             ensure_ascii=False
         )
 
-    print(
-        "Cached search plan successfully.",
-        flush=True
-    )
 
     # Merge synonyms into the two final lists
     return merge_search_terms(plan)
@@ -492,11 +441,4 @@ if __name__ == "__main__":
 
     plan = plan_question(question)
 
-    print("\nGENERATED SEARCH PLAN:\n")
-    print(
-        json.dumps(
-            plan,
-            indent=2,
-            ensure_ascii=False
-        )
-    )
+   

@@ -5,6 +5,7 @@ from pathlib import Path
 
 from retrieval import edges, nodes
 
+from query_planner import plan_question
 
 # --------------------------------------------------
 # 1. SEARCH CONFIGURATION
@@ -432,27 +433,30 @@ def parse_question(question):
 # 7. SEARCH A NATURAL-LANGUAGE QUESTION
 # --------------------------------------------------
 
+
 def search_question(question, top_k=15):
-    """Parse a question and search the graph."""
+    """
+    Use Qwen to interpret any ecological question,
+    then search the causal graph.
+    """
 
-    plan = parse_question(question)
+    # STEP 1: Extract interventions and outcomes
+    plan = plan_question(question)
 
-    if plan is None:
-        return {
-            "status": "unsupported_question_format",
-            "results": [],
-            "searched_for": question,
-        }
+    print("\n========== QWEN SEARCH PLAN ==========")
+    print(json.dumps(plan, indent=2))
+    print("======================================")
 
+    # STEP 2: Search graph using extracted terms
     result = search_plan(plan, top_k=top_k)
 
-    # Separate weak matches from stronger matches.
+    # STEP 3: Flag weak matches
     if result["results"]:
-
         if result["results"][0]["score"] < MIN_SCORE:
             result["status"] = "weak_matches"
 
     return result
+
 
 
 # --------------------------------------------------
@@ -646,19 +650,20 @@ def evaluate_retrieval(gold_file, top_k=15):
 # 11. RUN
 # --------------------------------------------------
 
+
 if __name__ == "__main__":
-    title = input().strip()
 
-    if title == "SEARCH PLAN":
-        plan = {
-            "interventions": [
-                ["wildfire", "boreal"],
-                ["fire", "boreal"]
-            ],
-            "outcomes": [
-                ["conifer", "regeneration"],
-                ["conifer", "regrowth"]
-            ],
-        }
+    question = input(
+        "\nEnter an ecological question: "
+    ).strip()
 
-        display_results(search_plan(plan))
+    if not question:
+        print("Please enter a question.")
+
+    else:
+        result = search_question(
+            question,
+            top_k=15
+        )
+
+        display_results(result)

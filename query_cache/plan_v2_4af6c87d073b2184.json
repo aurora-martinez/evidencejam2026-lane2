@@ -1,0 +1,50 @@
+{
+  "interventions": [
+    "seedling size",
+    "nursery fertilization",
+    "mycorrhizal inoculation",
+    "competing vegetation",
+    "site preparation"
+  ],
+  "outcomes": [
+    "survival",
+    "growth"
+  ],
+  "synonyms": {
+    "seedling size": [
+      "stock size",
+      "seedling dimensions",
+      "seedling biomass"
+    ],
+    "nursery fertilization": [
+      "fertilizer application",
+      "nutrient fertilization",
+      "nursery nutrient treatment"
+    ],
+    "mycorrhizal inoculation": [
+      "mycorrhizal symbiont inoculation",
+      "mycorrhizal inoculant application",
+      "AMF inoculation"
+    ],
+    "competing vegetation": [
+      "vegetation competition",
+      "weed competition",
+      "biotic competition"
+    ],
+    "site preparation": [
+      "site prep",
+      "pre-planting site treatment",
+      "site clearing"
+    ],
+    "survival": [
+      "seedling survival",
+      "plant survival",
+      "survival rate"
+    ],
+    "growth": [
+      "seedling growth",
+      "plant growth",
+      "growth rate"
+    ]
+  }
+}

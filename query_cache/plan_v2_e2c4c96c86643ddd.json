@@ -1,0 +1,38 @@
+{
+  "interventions": [
+    "peatland rewetting",
+    "moss layer transfer",
+    "salt marsh realignment"
+  ],
+  "outcomes": [
+    "carbon sink",
+    "methane emissions"
+  ],
+  "synonyms": {
+    "peatland rewetting": [
+      "peatland re-wetting",
+      "rewetting peatlands",
+      "peatland hydrological restoration"
+    ],
+    "moss layer transfer": [
+      "moss layer transplantation",
+      "moss mat transfer",
+      "Sphagnum transfer"
+    ],
+    "salt marsh realignment": [
+      "marsh realignment",
+      "coastal realignment",
+      "managed realignment"
+    ],
+    "carbon sink": [
+      "net carbon uptake",
+      "carbon sequestration",
+      "negative carbon balance"
+    ],
+    "methane emissions": [
+      "CH4 emissions",
+      "methane flux",
+      "CH4 flux"
+    ]
+  }
+}
