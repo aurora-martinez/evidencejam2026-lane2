@@ -23,7 +23,7 @@ load_dotenv(BASE_DIR / ".env")
 client = OpenAI(
     base_url=os.environ["BRINE_URL"],
     api_key=os.environ["BRINE_API_KEY"],
-    timeout=45.0,
+    timeout=120.0,
     max_retries=0
 )
 

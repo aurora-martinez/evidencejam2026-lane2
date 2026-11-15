@@ -1,0 +1,44 @@
+{
+  "interventions": [
+    "fire interval",
+    "fire severity",
+    "seed supply",
+    "seedbed type"
+  ],
+  "outcomes": [
+    "natural conifer regeneration",
+    "conifer regeneration failure"
+  ],
+  "synonyms": {
+    "fire interval": [
+      "fire return interval",
+      "time since fire",
+      "fire frequency"
+    ],
+    "fire severity": [
+      "burn severity",
+      "fire intensity",
+      "disturbance severity"
+    ],
+    "seed supply": [
+      "seed availability",
+      "seed source",
+      "seed rain"
+    ],
+    "seedbed type": [
+      "seedbed condition",
+      "soil seedbed",
+      "seedbed quality"
+    ],
+    "natural conifer regeneration": [
+      "conifer recruitment",
+      "natural regeneration",
+      "conifer seedling establishment"
+    ],
+    "conifer regeneration failure": [
+      "regeneration failure",
+      "lack of conifer regeneration",
+      "failed regeneration"
+    ]
+  }
+}
