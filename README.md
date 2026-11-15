@@ -17,7 +17,7 @@ python generate_answers.py questions.yaml answers.json
 **1. Install dependencies**
 
 ```bash
-pip install -r requirements.txt
+pip install python-dotenv pyyaml
 ```
 
 **2. Configure environment variables**
