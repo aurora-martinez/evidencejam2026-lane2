@@ -99,6 +99,17 @@
       "edge_ids": [],
       "searched_for": "The graph search was not completed due to TypeError. No conclusion about evidence availability can be made.",
       "extras": []
+    },
+    {
+      "id": "b5",
+      "status": "no_evidence",
+      "answer": "No direct graph evidence was retrieved to answer this question.",
+      "direction": null,
+      "confidence": 0.45,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "No direct edge found between intervention terms ['deer browsing', 'browsing', 'ungulate browsing', 'deer herbivory', 'competing vegetation', 'vegetation competition', 'competitive vegetation', 'weed competition', 'harvesting', 'cutting', 'logging', 'timber harvest', 'drought', 'drought stress', 'water deficit', 'dry conditions', 'repeated fires', 'fire recurrence', 'fire frequency', 'repeated fire'] and outcome terms ['stressor interaction', 'multiple stressor interaction', 'stressor interaction effect', 'multiple stressor effects', 'recovery limitation', 'recovery constraint', 'recovery limiting factor', 'restoration recovery limitation']. Indirect paths were not checked.",
+      "extras": []
     }
   ]
 }

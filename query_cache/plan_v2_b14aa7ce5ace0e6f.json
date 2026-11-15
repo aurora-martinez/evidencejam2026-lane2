@@ -1,0 +1,50 @@
+{
+  "interventions": [
+    "deer browsing",
+    "competing vegetation",
+    "harvesting",
+    "drought",
+    "repeated fires"
+  ],
+  "outcomes": [
+    "stressor interaction",
+    "recovery limitation"
+  ],
+  "synonyms": {
+    "deer browsing": [
+      "browsing",
+      "ungulate browsing",
+      "deer herbivory"
+    ],
+    "competing vegetation": [
+      "vegetation competition",
+      "competitive vegetation",
+      "weed competition"
+    ],
+    "harvesting": [
+      "cutting",
+      "logging",
+      "timber harvest"
+    ],
+    "drought": [
+      "drought stress",
+      "water deficit",
+      "dry conditions"
+    ],
+    "repeated fires": [
+      "fire recurrence",
+      "fire frequency",
+      "repeated fire"
+    ],
+    "stressor interaction": [
+      "multiple stressor interaction",
+      "stressor interaction effect",
+      "multiple stressor effects"
+    ],
+    "recovery limitation": [
+      "recovery constraint",
+      "recovery limiting factor",
+      "restoration recovery limitation"
+    ]
+  }
+}
