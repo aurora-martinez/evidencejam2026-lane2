@@ -1,0 +1,106 @@
+{
+  "interventions": [
+    "created marsh",
+    "constructed wetland",
+    "restored wetland",
+    "natural reference wetland",
+    "wetland creation",
+    "wetland restoration"
+  ],
+  "outcomes": [
+    "time to comparable biodiversity",
+    "time to comparable ecosystem function",
+    "biodiversity",
+    "ecosystem function",
+    "lagging attributes",
+    "functional equivalence",
+    "species richness"
+  ],
+  "subquestions": [
+    {
+      "intervention": "created marsh",
+      "outcome": "time to comparable biodiversity"
+    },
+    {
+      "intervention": "created marsh",
+      "outcome": "time to comparable ecosystem function"
+    },
+    {
+      "intervention": "created marsh",
+      "outcome": "lagging attributes"
+    },
+    {
+      "intervention": "constructed wetland",
+      "outcome": "time to comparable biodiversity"
+    },
+    {
+      "intervention": "constructed wetland",
+      "outcome": "time to comparable ecosystem function"
+    },
+    {
+      "intervention": "constructed wetland",
+      "outcome": "lagging attributes"
+    },
+    {
+      "intervention": "restored wetland",
+      "outcome": "time to comparable biodiversity"
+    },
+    {
+      "intervention": "restored wetland",
+      "outcome": "time to comparable ecosystem function"
+    },
+    {
+      "intervention": "restored wetland",
+      "outcome": "lagging attributes"
+    },
+    {
+      "intervention": "created marsh",
+      "outcome": "functional equivalence"
+    },
+    {
+      "intervention": "created marsh",
+      "outcome": "species richness"
+    },
+    {
+      "intervention": "natural reference wetland",
+      "outcome": "biodiversity"
+    }
+  ],
+  "synonyms": {
+    "created marsh": [
+      "constructed wetland",
+      "artificial wetland",
+      "restored wetland",
+      "engineered wetland",
+      "created wetland"
+    ],
+    "natural reference wetland": [
+      "reference wetland",
+      "natural wetland",
+      "pristine wetland",
+      "intact wetland",
+      "unmanaged wetland"
+    ],
+    "biodiversity": [
+      "species richness",
+      "biological diversity",
+      "taxonomic diversity",
+      "community diversity",
+      "species abundance"
+    ],
+    "ecosystem function": [
+      "wetland function",
+      "ecosystem services",
+      "functional equivalence",
+      "hydrologic function",
+      "biogeochemical function"
+    ],
+    "lagging attributes": [
+      "delayed attributes",
+      "slowly recovering attributes",
+      "non-equivalent attributes",
+      "lagging indicators",
+      "deficit attributes"
+    ]
+  }
+}

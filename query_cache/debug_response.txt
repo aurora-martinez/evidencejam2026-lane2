@@ -1,0 +1,83 @@
+
+
+{
+  "interventions": [
+    "seedling size",
+    "nursery fertilization",
+    "mycorrhizal inoculation",
+    "competing vegetation",
+    "site preparation",
+    "planting stock traits",
+    "tree planting",
+    "Canadian forest restoration"
+  ],
+  "outcomes": [
+    "survival",
+    "growth",
+    "height growth",
+    "diameter growth",
+    "biomass",
+    "mortality",
+    "establishment",
+    "canopy closure"
+  ],
+  "subquestions": [
+    {
+      "intervention": "seedling size",
+      "outcome": "survival"
+    },
+    {
+      "intervention": "seedling size",
+      "outcome": "growth"
+    },
+    {
+      "intervention": "nursery fertilization",
+      "outcome": "survival"
+    },
+    {
+      "intervention": "nursery fertilization",
+      "outcome": "growth"
+    },
+    {
+      "intervention": "mycorrhizal inoculation",
+      "outcome": "survival"
+    },
+    {
+      "intervention": "mycorrhizal inoculation",
+      "outcome": "growth"
+    },
+    {
+      "intervention": "competing vegetation",
+      "outcome": "survival"
+    },
+    {
+      "intervention": "competing vegetation",
+      "outcome": "growth"
+    },
+    {
+      "intervention": "site preparation",
+      "outcome": "survival"
+    },
+    {
+      "intervention": "site preparation",
+      "outcome": "growth"
+    },
+    {
+      "intervention": "seedling size with competing vegetation",
+      "outcome": "survival"
+    },
+    {
+      "intervention": "nursery fertilization with site preparation",
+      "outcome": "growth"
+    }
+  ],
+  "synonyms": {
+    "seedling size": [
+      "seedling height",
+      "seedling diameter",
+      "planting stock size",
+      "container size",
+      "seedling quality"
+    ],
+    "nursery fertilization": [
+      "fertilizer application",
