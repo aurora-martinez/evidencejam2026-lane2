@@ -1,0 +1,50 @@
+{
+  "interventions": [
+    "oil sands tailings",
+    "PCBs",
+    "acid deposition",
+    "remediation actions"
+  ],
+  "outcomes": [
+    "lethal effects",
+    "sub-lethal effects",
+    "recovery"
+  ],
+  "synonyms": {
+    "oil sands tailings": [
+      "tailings",
+      "oil sands tailings ponds",
+      "bitumen tailings"
+    ],
+    "PCBs": [
+      "polychlorinated biphenyls",
+      "PCB contamination",
+      "PCB exposure"
+    ],
+    "acid deposition": [
+      "acid rain",
+      "acid precipitation",
+      "acidic deposition"
+    ],
+    "remediation actions": [
+      "remediation",
+      "restoration",
+      "cleanup actions"
+    ],
+    "lethal effects": [
+      "mortality",
+      "death",
+      "lethal impacts"
+    ],
+    "sub-lethal effects": [
+      "sublethal effects",
+      "sublethal impacts",
+      "non-lethal effects"
+    ],
+    "recovery": [
+      "ecological recovery",
+      "population recovery",
+      "community recovery"
+    ]
+  }
+}

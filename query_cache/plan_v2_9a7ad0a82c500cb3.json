@@ -1,0 +1,29 @@
+{
+  "interventions": [
+    "herbicide application",
+    "glyphosate"
+  ],
+  "outcomes": [
+    "native plant cover",
+    "native plant richness"
+  ],
+  "synonyms": {
+    "herbicide application": [
+      "herbicide treatment",
+      "chemical control",
+      "glyphosate application"
+    ],
+    "glyphosate": [
+      "Roundup",
+      "N-(phosphonomethyl)glycine"
+    ],
+    "native plant cover": [
+      "native vegetation cover",
+      "native plant percent cover"
+    ],
+    "native plant richness": [
+      "native species richness",
+      "native plant species richness"
+    ]
+  }
+}

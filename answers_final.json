@@ -1,0 +1,104 @@
+{
+  "team": "YC Startup",
+  "answers": [
+    {
+      "id": "c3",
+      "status": "processing_error",
+      "answer": "Unable to determine an answer because question processing did not complete.",
+      "direction": null,
+      "confidence": 0.0,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "The graph search was not completed due to TypeError. No conclusion about evidence availability can be made.",
+      "extras": []
+    },
+    {
+      "id": "c4-modified",
+      "status": "processing_error",
+      "answer": "Unable to determine an answer because question processing did not complete.",
+      "direction": null,
+      "confidence": 0.0,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "The graph search was not completed due to TypeError. No conclusion about evidence availability can be made.",
+      "extras": []
+    },
+    {
+      "id": "c7",
+      "status": "no_evidence",
+      "answer": "No direct graph evidence was retrieved to answer this question.",
+      "direction": null,
+      "confidence": 0.45,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "No direct edge found between intervention terms ['created marshes', 'constructed marshes', 'restored marshes', 'artificial marshes'] and outcome terms ['time to reach comparable biodiversity and function', 'recovery time', 'time to equivalence', 'time to functional and biodiversity equivalence', 'biodiversity', 'biological diversity', 'species richness', 'biotic diversity', 'ecosystem function', 'wetland function', 'ecological function', 'functional equivalence', 'lagging attributes', 'delayed attributes', 'slowly recovering attributes', 'attributes with lag']. Indirect paths were not checked.",
+      "extras": []
+    },
+    {
+      "id": "c13-modified",
+      "status": "no_evidence",
+      "answer": "No direct graph evidence was retrieved to answer this question.",
+      "direction": null,
+      "confidence": 0.5,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "No direct edge found between intervention terms ['fire interval', 'fire return interval', 'return interval', 'time since fire', 'fire severity', 'burn severity', 'fire intensity', 'post-fire severity', 'seed supply', 'seed availability', 'seed source', 'seed rain', 'seedbed type', 'seedbed condition', 'soil seedbed', 'post-fire seedbed'] and outcome terms ['natural conifer regeneration', 'conifer regeneration', 'natural regeneration of conifers', 'conifer seedling establishment', 'regeneration failure', 'conifer regeneration failure', 'lack of conifer regeneration', 'failure of natural conifer regeneration']. Indirect paths were not checked.",
+      "extras": []
+    },
+    {
+      "id": "c16-modified",
+      "status": "no_evidence",
+      "answer": "No direct graph evidence was retrieved to answer this question.",
+      "direction": null,
+      "confidence": 0.5,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "No direct edge found between intervention terms [] and outcome terms []. Indirect paths were not checked.",
+      "extras": []
+    },
+    {
+      "id": "b1",
+      "status": "no_evidence",
+      "answer": "No direct graph evidence was retrieved to answer this question.",
+      "direction": null,
+      "confidence": 0.45,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "No direct edge found between intervention terms ['partial harvesting', 'partial cut', 'partial harvest', 'selective logging', 'clearcutting', 'clearcut', 'clear felling', 'clear-felling', 'retained woody debris', 'coarse woody debris retention', 'deadwood retention', 'retained deadwood', 'riparian retention', 'riparian buffer retention', 'riparian forest retention', 'riparian protection'] and outcome terms ['biodiversity maintenance', 'biodiversity conservation', 'species richness maintenance', 'biological diversity maintenance', 'biodiversity recovery speed', 'biodiversity recovery rate', 'post-harvest biodiversity recovery', 'biodiversity rebound']. Indirect paths were not checked.",
+      "extras": []
+    },
+    {
+      "id": "b2",
+      "status": "processing_error",
+      "answer": "Unable to determine an answer because question processing did not complete.",
+      "direction": null,
+      "confidence": 0.0,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "The graph search was not completed due to TypeError. No conclusion about evidence availability can be made.",
+      "extras": []
+    },
+    {
+      "id": "b3",
+      "status": "no_evidence",
+      "answer": "No direct graph evidence was retrieved to answer this question.",
+      "direction": null,
+      "confidence": 0.35,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "No direct edge found between intervention terms ['herbicide application', 'herbicide treatment', 'chemical control', 'glyphosate application', 'glyphosate', 'Roundup', 'N-(phosphonomethyl)glycine'] and outcome terms ['native plant cover', 'native vegetation cover', 'native plant percent cover', 'native plant richness', 'native species richness', 'native plant species richness']. Indirect paths were not checked.",
+      "extras": []
+    },
+    {
+      "id": "b4",
+      "status": "processing_error",
+      "answer": "Unable to determine an answer because question processing did not complete.",
+      "direction": null,
+      "confidence": 0.0,
+      "certainty": null,
+      "edge_ids": [],
+      "searched_for": "The graph search was not completed due to TypeError. No conclusion about evidence availability can be made.",
+      "extras": []
+    }
+  ]
+}

@@ -9,7 +9,13 @@ from pathlib import Path
 import yaml
 import time
 from search import search_question
-from retrieval import nodes, edges as graph_edges
+from retrieval import nodes, edges as graph_edges, graph
+source_documents = {}
+
+for doc in graph.get("source_documents", []):
+    for key in (doc.get("document_id"), doc.get("doi")):
+        if key:
+            source_documents[key] = doc
 from answer_generator import generate_answer, prepare_evidence
 
 # --------------------------------------------------
@@ -440,144 +446,152 @@ def estimate_confidence(edges, direction, search_result):
 # GENERATE ANSWER TEXT
 # --------------------------------------------------
 
+
 def build_answer(question, edges, direction):
     """
-    Generate a short answer from retrieved graph edges.
+    Generate a publication-level evidence report without Qwen.
     """
 
     if not edges:
         return (
-            "No direct graph edge was retrieved "
-            "connecting the searched interventions "
-            "and outcomes."
+            "Insufficient evidence: no direct graph "
+            "relationships were retrieved for this question."
         )
 
-    count = len(edges)
-
-    subjects = []
-    outcomes = []
+    # Group edges by unique publication
+    publications = {}
 
     for edge in edges:
 
-        subject = nodes.get(
-            edge.get("subject"), {}
+        source_id = edge.get("source_document")
+
+        if not source_id:
+            source_id = edge.get("id", "Unknown source")
+
+        if source_id not in publications:
+
+            doc = source_documents.get(source_id, {})
+
+            publications[source_id] = {
+                "title": doc.get("title", "Title unavailable"),
+                "authors": doc.get("authors", []),
+                "year": doc.get("year"),
+                "journal": doc.get("journal"),
+                "doi": doc.get("doi", source_id),
+                "location": doc.get("location"),
+                "findings": [],
+                "seen": set()
+            }
+
+        subject = nodes.get(edge.get("subject"), {})
+        outcome = nodes.get(edge.get("object"), {})
+
+        finding = edge.get("original_sentence", "")
+
+        finding_key = (
+            subject.get("name"),
+            outcome.get("name"),
+            finding
         )
 
-        outcome = nodes.get(
-            edge.get("object"), {}
+        if finding and finding_key not in publications[source_id]["seen"]:
+
+            publications[source_id]["seen"].add(finding_key)
+
+            publications[source_id]["findings"].append({
+                "subject": subject.get("name", "Unknown intervention"),
+                "outcome": outcome.get("name", "Unknown outcome"),
+                "direction": outcome.get("state_or_change_qualifier"),
+                "negated": edge.get("negated"),
+                "sentence": finding
+            })
+
+    # Build report
+    report = [
+        f"Research question: {question}",
+        "",
+        f"Retrieved evidence from {len(publications)} unique publications "
+        f"({len(edges)} graph edges).",
+        "",
+        "PUBLICATION FINDINGS",
+        ""
+    ]
+
+    for index, (source_id, publication) in enumerate(
+        publications.items(), 1
+    ):
+
+        authors = publication["authors"]
+
+        if isinstance(authors, list):
+            author_text = ", ".join(authors[:3])
+            if len(authors) > 3:
+                author_text += " et al."
+        else:
+            author_text = str(authors) if authors else "Authors unavailable"
+
+        metadata = [
+            author_text,
+            str(publication["year"]) if publication["year"] else None,
+            publication["journal"],
+            publication["doi"]
+        ]
+
+        metadata_text = " | ".join(
+            str(value) for value in metadata if value
         )
 
-        subject_name = subject.get("name")
-        outcome_name = outcome.get("name")
+        report.append(
+            f"{index}. {publication['title']}"
+        )
+        report.append(metadata_text)
 
-        if subject_name:
-            subjects.append(
-                str(subject_name)
+        if publication["location"]:
+            report.append(
+                f"Location: {publication['location']}"
             )
 
-        if outcome_name:
-            outcomes.append(
-                str(outcome_name)
-            )
+        findings = publication["findings"]
 
-    subject_label = (
-        Counter(subjects).most_common(1)[0][0]
-        if subjects
-        else "the investigated driver"
+        if not findings:
+            report.append("No usable finding sentence was retrieved.")
+        else:
+            report.append("Retrieved findings:")
+
+            # Show up to two distinct evidence statements.
+            for finding in findings[:2]:
+
+                sentence = finding["sentence"]
+
+                # Keep displayed source text concise.
+                words = sentence.split()
+                if len(words) > 25:
+                    sentence = " ".join(words[:25]) + "..."
+
+                report.append(
+                    f"- {finding['subject']} -> "
+                    f"{finding['outcome']}: {sentence}"
+                )
+
+        report.append("")
+
+    # Overall interpretation
+    report.append("OVERALL INTERPRETATION")
+
+    report.append(
+        f"The aggregate direction calculated from the retrieved "
+        f"graph edges is: {direction or 'undetermined'}."
     )
 
-    outcome_label = (
-        Counter(outcomes).most_common(1)[0][0]
-        if outcomes
-        else "the ecological outcome"
+    report.append(
+        "These results represent retrieved graph evidence, "
+        "not a comprehensive review of all scientific literature. "
+        "Different outcomes, species, sites and treatments should "
+        "not be treated as directly comparable."
     )
 
-    if direction == "increase":
+    return "\n".join(report)
 
-        statement = (
-            f"The retrieved graph evidence suggests "
-            f"an increase in {outcome_label} associated "
-            f"with {subject_label}."
-        )
-
-    elif direction == "decrease":
-
-        statement = (
-            f"The retrieved graph evidence suggests "
-            f"a decrease in {outcome_label} associated "
-            f"with {subject_label}."
-        )
-
-    elif direction == "no_effect":
-
-        statement = (
-            f"The retrieved graph evidence reports "
-            f"no detectable effect on {outcome_label} "
-            f"for {subject_label}."
-        )
-
-    elif direction == "mixed":
-
-        statement = (
-            "The retrieved graph evidence contains "
-            "different reported outcome directions."
-        )
-
-    else:
-
-        statement = (
-            "The graph contains potentially relevant "
-            "relationships, but their outcome direction "
-            "cannot be determined reliably."
-        )
-
-    return (
-        f"{statement} "
-        f"Based on {count} retrieved graph "
-        f"{'edge' if count == 1 else 'edges'}."
-    )
-
-def generate_answer_text(question, search_result, evidence, direction):
-    """
-    Use Qwen to synthesize the retrieved graph evidence.
-
-    If Qwen fails, fall back to the deterministic answer.
-    """
-
-    fallback = build_answer(
-        question,
-        evidence,
-        direction
-    )
-
-    try:
-        answer = generate_answer(
-            question,
-            search_result
-        )
-
-        # Make sure Qwen returned usable text.
-        if not isinstance(answer, str) or not answer.strip():
-            raise ValueError(
-                "Qwen returned an empty or invalid answer."
-            )
-
-        return answer.strip()
-
-    except Exception as error:
-
-        print(
-            f"Qwen answer generation failed: "
-            f"{type(error).__name__}: {error}",
-            flush=True
-        )
-
-        print(
-            "Using deterministic fallback answer.",
-            flush=True
-        )
-
-        return fallback
 # --------------------------------------------------
 # QWEN ANSWER GENERATION
 # --------------------------------------------------
@@ -683,7 +697,7 @@ def format_answer(question_item, search_result):
     )
 
     # Qwen receives publication-level evidence
-    answer_text = generate_answer_text(
+    answer_text = generate_answers(
         question,
         search_result,
         unique_edges,
