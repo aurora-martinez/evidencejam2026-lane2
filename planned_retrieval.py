@@ -1,91 +1,111 @@
 
+import re
 from retrieval import edges, nodes
-
-# Example search plan for question b2.
-# Later, Qwen will generate this automatically.
-search_plan = {
-    "interventions": [
-        "peatland",
-        "rewetting",
-        "moss transfer",
-        "moss layer transfer",
-        "salt marsh",
-        "water table"
-    ],
-    "outcomes": [
-        "carbon",
-        "methane",
-        "CH4",
-        "CO2",
-        "greenhouse gas",
-        "ecosystem exchange",
-        "carbon sink"
-    ]
-}
 
 
 def node_text(node):
     return " ".join([
         str(node.get("name") or ""),
         str(node.get("entity_term") or ""),
-        str(node.get("embedding_text") or "")
+        str(node.get("measured_attribute") or ""),
+        str(node.get("embedding_text") or ""),
     ]).lower()
 
 
-def matches_any(text, terms):
-    return sum(
-        term.lower() in text
-        for term in terms
-    )
+# Built once, not once per edge
+NODE_TEXT = {nid: node_text(n) for nid, n in nodes.items()}
 
 
-def planned_search(plan, top_k=20):
+def compile_terms(terms):
+    compiled = []
+
+    for group in terms:
+
+        # Allow either a single string or a list of strings
+        if isinstance(group, str):
+            group = [group]
+
+        compiled.append([
+            (t, re.compile(
+                r"\b" + re.escape(t.lower()) + r"(?:s|es)?\b"
+            ))
+            for t in group
+        ])
+
+    return compiled
+
+
+def term_hits(compiled):
+    """Find keyword groups where ALL terms appear in a node."""
+    out = {}
+
+    for nid, text in NODE_TEXT.items():
+        found = []
+
+        for group in compiled:
+            if all(pat.search(text) for t, pat in group):
+                found.append(" AND ".join(t for t, pat in group))
+
+        if found:
+            out[nid] = found
+
+    return out
+
+
+def planned_search(plan):
+    iv_hits = term_hits(compile_terms(plan["interventions"]))
+    oc_hits = term_hits(compile_terms(plan["outcomes"]))
+
     results = []
 
     for edge in edges:
-        subject = nodes[edge["subject"]]
-        outcome = nodes[edge["object"]]
+        a = iv_hits.get(edge["subject"])
+        b = oc_hits.get(edge["object"])
 
-        subject_text = node_text(subject)
-        outcome_text = node_text(outcome)
+        if a and b:
+            results.append({
+                "edge": edge,
+                "score": len(a) + len(b),
+                "intervention_terms": a,
+                "outcome_terms": b,
+            })
 
-        intervention_score = matches_any(
-            subject_text,
-            plan["interventions"]
-        )
+    results.sort(key=lambda r: r["score"], reverse=True)
 
-        outcome_score = matches_any(
-            outcome_text,
-            plan["outcomes"]
-        )
-
-        # Prefer edges connecting an intervention to an outcome
-        if intervention_score > 0 and outcome_score > 0:
-            score = 10 + intervention_score + outcome_score
-            results.append((score, edge))
-
-    results.sort(
-        key=lambda item: item[0],
-        reverse=True
-    )
-
-    return [edge for score, edge in results[:top_k]]
+    return results
 
 
 if __name__ == "__main__":
 
-    results = planned_search(search_plan)
+    plan = {
+        "interventions": [
+            "planting-stock traits",
+            ["seedling", "size"],
+            "nursery fertilization",
+            ["mycorrhizal", "inoculation"]
+        ],
 
-    print(f"Found {len(results)} relevant edges.\n")
+        "outcomes": [
+            "survival",
+            "growth"
+        ],
+    }
 
-    for edge in results:
-        subject = nodes[edge["subject"]]
-        outcome = nodes[edge["object"]]
+    results = planned_search(plan)
+
+    print(f"Found {len(results)} edges\n")
+
+    for r in results[:20]:
+        e = r["edge"]
 
         print("=" * 60)
-        print("EDGE:", edge["id"])
-        print("SUBJECT:", subject.get("name"))
-        print("PREDICATE:", edge.get("predicate"))
-        print("OUTCOME:", outcome.get("name"))
-        print("CERTAINTY:", edge.get("certainty_grade"))
-        print()
+        print("EDGE:", e["id"])
+        print("CAUSE:", nodes[e["subject"]].get("name"),
+              r["intervention_terms"])
+        print("EFFECT:", nodes[e["object"]].get("name"),
+              r["outcome_terms"])
+        print("predicate:", e.get("predicate"),
+              "| negated:", e.get("negated"))
+
+    if not results:
+        print("no_evidence. searched for:", plan)
